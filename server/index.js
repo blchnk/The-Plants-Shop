@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require("express");
 const cors = require('cors'); // enabling CORS for any unknown
+const router = require('./routes/index');
 
 const sequelize = require('./db')
 const models = require('./models/models');
@@ -8,13 +9,9 @@ const models = require('./models/models');
 const PORT = process.env.PORT;
 
 const app = express();
-// middleware
 app.use(cors());
 app.use(express.json());
-
-app.get('/', (req, res) => {
-    res.json({message: 'hi bitch!!!'});
-});
+app.use('/api', router);
 
 const start = async () => {
     try {
