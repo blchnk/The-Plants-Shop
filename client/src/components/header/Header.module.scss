@@ -1,0 +1,53 @@
+$search-icon: url('../../../public/resources/img/icons/search.png');
+
+.header {
+  padding: 20px 0;
+  position: relative;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo{
+  cursor: pointer;
+}
+
+.logoLink{
+  font-size: 24px;
+  flex-basis: 10%;
+  cursor: pointer;
+}
+
+.list{
+  display: flex;
+  column-gap: 30px;
+}
+
+.pageLinks{
+  flex-basis: 80%;
+  justify-content: center;
+  margin: 0 30px;
+  flex-wrap: wrap;
+}
+
+.icons{
+  flex-basis: 10%;
+  justify-content: right;
+}
+
+.btn{
+  cursor: pointer;
+}
+
+.linkToPage{
+  transition: color 0.3s ease;
+
+  &:hover{
+    color: #00ab84;
+  }
+}
+
+

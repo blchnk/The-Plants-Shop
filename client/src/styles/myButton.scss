@@ -1,0 +1,16 @@
+.btn{
+  font-size: 16px;
+  padding: 0.6em 2em;
+  font-weight: 500;
+  margin-top: 0.6rem;
+}
+
+.btnAnimation{
+  background-color: #00AA83;
+  transition: all 0.3s linear;
+  color: white;
+
+  &:hover{
+    background-color: #018d6f;
+  }
+}

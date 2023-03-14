@@ -1,0 +1,43 @@
+.intro{
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainText{
+  font-size: 128px;
+  margin-top: 80px;
+}
+
+.mainImg{
+  height: auto;
+  width: 630px;
+}
+
+@media screen and (max-width: 1200px) {
+  .mainText{
+    font-size: 100px;
+    line-height: 100px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .mainText{
+    font-size: 80px;
+    line-height: 100px;
+  }
+
+  .mainImg{
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .mainText{
+    font-size: 60px;
+    line-height: 80px;
+  }
+
+  .mainImg{
+    width: 500px;
+  }
+}

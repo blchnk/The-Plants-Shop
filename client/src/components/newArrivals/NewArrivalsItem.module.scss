@@ -1,0 +1,27 @@
+.card {
+  img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+}
+
+.cardTextBlock {
+  display: flex;
+  ;
+  //flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardTextBlock {
+  padding: 0.6em 0.6em;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.price {
+  font-weight: 600;
+}

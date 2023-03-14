@@ -1,0 +1,10 @@
+.contentWrapper{
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.productCardsWrapper{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1vw;
+}
