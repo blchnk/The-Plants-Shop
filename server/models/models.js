@@ -2,15 +2,13 @@ const sequalize = require('../db');
 const { DataTypes } = require('sequelize');
 
 const User = sequalize.define('user', {
-    user_id: {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false
     },
     email: {
         type: DataTypes.STRING,
@@ -32,131 +30,112 @@ const User = sequalize.define('user', {
 })
 
 const Cart = sequalize.define('cart', {
-    cart_id: {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false
     }
 })
 
 const CartProduct = sequalize.define('cart_product', {
-    cart_product_id: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
     }
 })
 
 const Product  = sequalize.define('product', {
-    product_id: {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false
     },
     price: {
         type: DataTypes.INTEGER,
-        allowNull: false
     },
     img: {
         type: DataTypes.STRING,
-        unique: true,
-        allowNull: false
     }
 })
 
 const ProductInfo = sequalize.define('product_Info', {
-    product_info_id: {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false
     }
 })
 
 const Type = sequalize.define('type', {
-    type_id: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        allowNull: false,
         autoIncrement: true
     },
-    title: {
+    name: {
         type: DataTypes.STRING,
         unique: true,
-        allowNull: false
     }
 })
 
 const TypeColor = sequalize.define('type_color', {
-    type_color_id: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        allowNull: false,
         autoIncrement: true
     }
 })
 
 const TypeSize = sequalize.define('type_size', {
-    type_size_id: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        allowNull: false,
         autoIncrement: true
     }
 })
 
 const TypeVariety = sequalize.define('type_variety', {
-    type_variety_id: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
-        allowNull: false,
         autoIncrement: true
     }
 })
 
 const Color = sequalize.define('color', {
-    color_id: {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false
     },
-    title: {
+    name: {
         type: DataTypes.STRING,
-        allowNull: true
     }
 })
 
 const Size = sequalize.define('size', {
-    size_id: {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false,
     },
-    title: {
+    name: {
         type: DataTypes.STRING,
-        allowNull: true
     }
 })
 
 const Variety = sequalize.define('variety', {
-    variety_id: {
+    id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false
     },
-    title: {
+    name: {
         type: DataTypes.STRING,
-        allowNull: true
     }
 })
 
@@ -179,7 +158,7 @@ Type.belongsToMany(Color, { through: TypeColor });
 Color.belongsToMany(Type, { through: TypeColor });
 
 Type.belongsToMany(Size, { through: TypeSize });
-Color.belongsToMany(Type, { through: TypeSize });
+Size.belongsToMany(Type, { through: TypeSize });
 
 Type.belongsToMany(Variety, { through: TypeVariety });
 Variety.belongsToMany(Type, { through: TypeVariety });
@@ -191,7 +170,10 @@ module.exports = {
     Product,
     ProductInfo,
     Type,
+    Color,
     TypeColor,
+    Size,
     TypeSize,
+    Variety,
     TypeVariety
 }
