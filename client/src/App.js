@@ -1,18 +1,24 @@
 import React from "react";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import MainPage from "./pages/mainPage/MainPage";
-import ProductsPage from './pages/productsPage/ProductsPage'
+import {authRoutes, publicRoutes} from "./routes";
 import './App.module.scss'
 
 function App() {
-  return (
-      <BrowserRouter>
-          <Routes>
-              <Route path='/' element={<MainPage />} />
-              <Route path='/collections/all-plants' element={<ProductsPage />} />
-          </Routes>
-      </BrowserRouter>
-  );
+    const isAuth = false;
+
+    return (
+        <BrowserRouter>
+            <Routes>
+                {isAuth && authRoutes.map(({path, component}) =>
+                    <Route key={path} path={path} element={component} />
+                )}
+                {publicRoutes.map(({path, component}) =>
+                    <Route key={path} path={path} element={component} />
+                )}
+                <Route path={'*'} element={publicRoutes[0].component} />
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
 export default App;
