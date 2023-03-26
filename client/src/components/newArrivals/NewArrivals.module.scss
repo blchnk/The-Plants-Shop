@@ -5,5 +5,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  grid-template-columns: 1fr 1fr 1fr;
+  .cardsWrapper{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

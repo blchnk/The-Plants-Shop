@@ -1,14 +1,14 @@
-const {Product} = require('../models/models');
-const path = require('path');
-const uuid = require('uuid');
+import { Product } from '../models/models';
+import { resolve } from 'path';
+import { v4 } from 'uuid';
 
 class ProductController {
     async create(req, res) {
         const {name, price, typeId} = req.body;
         const {img} = req.files;
         console.log(img);
-        let fileName = uuid.v4() + ".jpg";
-        await img.mv(path.resolve(__dirname, '..', 'static', fileName));
+        let fileName = v4() + ".jpg";
+        await img.mv(resolve(__dirname, '..', 'static', fileName));
 
         const product = await Product.create({name, price, typeId, img: fileName});
         res.json(product);
@@ -38,4 +38,4 @@ class ProductController {
     }
 }
 
-module.exports = new ProductController()
+export default new ProductController()

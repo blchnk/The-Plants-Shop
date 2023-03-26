@@ -4,26 +4,68 @@ import style from './SortBar.module.scss'
 const SortBar = () => {
     return (
         <div className={style.sortBar}>
-            <div className={style.sortOptionWrapper}>
-                <p className={style.title}>Тип</p>
-                <p>dedw</p>
-                <p>dedw</p>
-                <p>dedw</p>
-                <p>dedw</p>
-                <p>dedw</p>
-                <p>dedw</p>
-                <p>dedw</p>
-                <p>dedw</p>
-                <p>dedw</p>
-                <p>dedw</p>
-                <p>dedw</p>
+
+            <div className={style.sortBarItem}>
+                <h3>Разновидность</h3>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Цветущие растения</label>
+                </div>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Кактусы и суккуленты</label>
+                </div>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Папоротники</label>
+                </div>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Пальмовые</label>
+                </div>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Цветущие</label>
+                </div>
             </div>
 
-            <p className={style.title}>Размер</p>
-            <p className={style.title}>Комнатные</p>
-            <p className={style.title}>Уход</p>
-            <p className={style.title}>Особые</p>
-            <p className={style.title}>Цена</p>
+            <div className={style.sortBarItem}>
+                <h3>Размер</h3>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Большие</label>
+                </div>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Средние</label>
+                </div>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Маленькие</label>
+                </div>
+            </div>
+            <div className={style.sortBarItem}>
+                <h3>Комнатные</h3>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Да</label>
+                </div>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Нет</label>
+                </div>
+            </div>
+            <div className={style.sortBarItem}>
+                <h3>Уход</h3>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Сложно</label>
+                </div>
+                <div className={style.inputWrapper}>
+                    <input type="checkbox" name='sortCheckbox'/>
+                    <label htmlFor="sortCheckbox">Легко</label>
+                </div>
+            </div>
         </div>
     );
 };

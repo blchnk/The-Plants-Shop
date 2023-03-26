@@ -1,4 +1,21 @@
 .sortBar{
-  background-color: #00ab84;
+  //background-color: #f3f3f3;
   margin-right: 15px;
+}
+
+.sortBarItem{
+  border-top: solid 2px #d2d2d2;
+  padding: 20px 0;
+}
+
+input{
+  margin-right: 7px;
+}
+
+label{
+  font-size: 14px;
+}
+
+.inputWrapper{
+  padding: 3px 0;
 }
