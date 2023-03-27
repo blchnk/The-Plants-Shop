@@ -1,5 +1,3 @@
-$search-icon: url('../../../public/resources/img/icons/search.png');
-
 .header {
   padding: 20px 0;
   position: relative;
@@ -26,6 +24,11 @@ $search-icon: url('../../../public/resources/img/icons/search.png');
   column-gap: 30px;
 }
 
+.iconsList{
+  display: flex;
+  column-gap: 20px;
+}
+
 .pageLinks{
   flex-basis: 80%;
   justify-content: center;
@@ -50,4 +53,7 @@ $search-icon: url('../../../public/resources/img/icons/search.png');
   }
 }
 
-
+.navIcon{
+  height: 30px;
+  width: auto;
+}

@@ -34,19 +34,20 @@ const Header = () => {
                             <a href="/">Доставка и Оплата</a>
                         </li>
                     </ul>
-                    <ul className={[style.list, style.icons].join(' ')}>
+                    <ul className={[style.iconsList, style.icons].join(' ')}>
                         <li className={style.item}>
-                            <button className={[style.searchBtn, style.btn].join(' ')}>se</button>
+                            <input className={style.navIcon} type="image" alt='search' src='resources/img/icons/search_FILL0_wght100_GRAD200_opsz48.png' />
                         </li>
                         <li className={style.item}>
-                            <button className={[style.searchBtn, style.btn].join(' ')}>ca</button>
+                            <input className={style.navIcon} type="image" alt='account' src='resources/img/icons/account_circle_FILL0_wght100_GRAD200_opsz48.png' />
                         </li>
                         <li className={style.item}>
-                            <button className={[style.searchBtn, style.btn].join(' ')}>ac</button>
+                            <input className={style.navIcon} type="image" alt='call' src='resources/img/icons/call_FILL0_wght100_GRAD200_opsz48.png' />
                         </li>
                         <li className={style.item}>
-                            <button className={[style.searchBtn, style.btn].join(' ')}>ca</button>
+                            <input className={style.navIcon} type="image" alt='cart' src='resources/img/icons/shopping_bag_FILL0_wght100_GRAD200_opsz48.png' />
                         </li>
+
                     </ul>
                 </nav>
             </header>
