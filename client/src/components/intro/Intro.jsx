@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './Intro.module.scss'
+import introImg from '../../resources/img/introPlant.png'
 
 const Intro = () => {
     return (
@@ -10,7 +11,7 @@ const Intro = () => {
                 <button className={['btn', 'btnAnimation'].join(' ')}>Купить</button>
             </div>
             <div>
-                <img className={style.mainImg} src='/resources/img/introPlant.png' alt=""/>
+                <img className={style.mainImg} src={introImg} alt=""/>
             </div>
         </div>
     );

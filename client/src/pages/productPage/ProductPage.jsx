@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
 import style from './ProductPage.module.scss';
 import Accordion from "../../components/accordion/Accordion";
+import React from "react";
 
 const ProductPage = () => {
-    const product = {id: 1, name: 'Aglaonema', price: '2500', img: '/resources/img/plant1.png'};
+    const product = {id: 1, name: 'Aglaonema', price: '2500', img: 'plant1.png'};
 
     const accordionData = [
         {
@@ -34,7 +34,7 @@ const ProductPage = () => {
         <div className='container'>
             <div className={style.contentWrapper}>
                 <div className={style.imgBlock}>
-                    <img src={product.img} alt=""/>
+                    <img src={require('../../resources/img/' + product.img)} alt=""/>
                 </div>
                 <div className={style.infoBlock}>
                     <h2 className={style.name}>{product.name}</h2>
@@ -59,8 +59,9 @@ const ProductPage = () => {
                         <p>Тест</p>
                     </div>
 
-                    {accordionData.map(item =>
-                        <Accordion title={item.title} content={item.content} />)}
+                    {accordionData.map(({title, content}, number) =>
+                        <Accordion title={title} content={content} key={number}/>
+                    )}
                 </div>
             </div>
         </div>

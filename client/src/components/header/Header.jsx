@@ -2,6 +2,10 @@ import React from 'react';
 import style from './Header.module.scss'
 import { Link } from "react-router-dom";
 import {HOME_ROUTE, PRODUCTS_ROUTE} from "../../utils/consts";
+import searchIcon from '../../resources/img/icons/search_FILL0_wght100_GRAD200_opsz48.png';
+import accountIcon from '../../resources/img/icons/account_circle_FILL0_wght100_GRAD200_opsz48.png';
+import callIcon from '../../resources/img/icons/call_FILL0_wght100_GRAD200_opsz48.png';
+import cartIcon from '../../resources/img/icons/shopping_bag_FILL0_wght100_GRAD200_opsz48.png';
 
 const Header = () => {
     return (
@@ -36,16 +40,16 @@ const Header = () => {
                     </ul>
                     <ul className={[style.iconsList, style.icons].join(' ')}>
                         <li className={style.item}>
-                            <input className={style.navIcon} type="image" alt='search' src='resources/img/icons/search_FILL0_wght100_GRAD200_opsz48.png' />
+                            <input className={style.navIcon} type="image" alt='search' src={searchIcon} />
                         </li>
                         <li className={style.item}>
-                            <input className={style.navIcon} type="image" alt='account' src='resources/img/icons/account_circle_FILL0_wght100_GRAD200_opsz48.png' />
+                            <input className={style.navIcon} type="image" alt='account' src={accountIcon} />
                         </li>
                         <li className={style.item}>
-                            <input className={style.navIcon} type="image" alt='call' src='resources/img/icons/call_FILL0_wght100_GRAD200_opsz48.png' />
+                            <input className={style.navIcon} type="image" alt='call' src={callIcon} />
                         </li>
                         <li className={style.item}>
-                            <input className={style.navIcon} type="image" alt='cart' src='resources/img/icons/shopping_bag_FILL0_wght100_GRAD200_opsz48.png' />
+                            <input className={style.navIcon} type="image" alt='cart' src={cartIcon} />
                         </li>
 
                     </ul>

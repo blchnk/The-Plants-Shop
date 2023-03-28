@@ -20,7 +20,6 @@ const ProductsPage = observer(() => {
                 </div>
             </div>
         </div>
-
     );
 });
 
