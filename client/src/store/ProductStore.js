@@ -4,9 +4,9 @@ export default class ProductStore {
     constructor() {
         this._products = [
             {id: 1, name: 'Aglaonema', price: '2500', img: 'plant1.png'},
-            {id: 2, name: 'Suspensia', price: '5000', img: 'plant1.png'},
-            {id: 3, name: 'Cactus', price: '2500', img: 'plant1.png'},
-            {id: 4, name: 'Fern', price: '2500', img: 'plant1.png'},
+            {id: 2, name: 'Suspensia', price: '5000', img: 'plant2.png'},
+            {id: 3, name: 'Cactus', price: '2500', img: 'plant3.png'},
+            {id: 4, name: 'Fern', price: '2500', img: 'plant4.png'},
             {id: 5, name: 'Big Pot', price: '2500', img: 'plant1.png'},
             {id: 6, name: 'Small Pot', price: '2500', img: 'plant1.png'},
             {id: 7, name: 'Medium Pot', price: '2500', img: 'plant1.png'},

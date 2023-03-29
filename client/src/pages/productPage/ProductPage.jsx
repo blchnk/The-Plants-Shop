@@ -43,25 +43,29 @@ const ProductPage = () => {
                         asperiores delectus eveniet
                         fuga nam perferendis sed tempore. Accusamus adipisci atque culpa earum fugit harum, in labore
                         nam quibusdam, ratione voluptate.</p>
-                    <div className={style.paramWrapper}>
-                        <h3>Размер</h3>
-                        <p>10см</p>
-                        <p>10см</p>
-                    </div>
-                    <div className={style.paramWrapper}>
-                        <h3>Цвет</h3>
-                        <p>Тест</p>
-                        <p>Тест</p>
-                    </div>
-                    <div className={style.paramWrapper}>
-                        <h3>Количество</h3>
-                        <p>Тест</p>
-                        <p>Тест</p>
+                    <div className={style.paramOptionsBlock}>
+                        <div className={style.paramWrapper}>
+                            <h3>Размер</h3>
+                            <p>10см</p>
+                            <p>10см</p>
+                        </div>
+                        <div className={style.paramWrapper}>
+                            <h3>Цвет</h3>
+                            <p>Тест</p>
+                            <p>Тест</p>
+                        </div>
+                        <div className={style.paramWrapper}>
+                            <h3>Количество</h3>
+                            <p>Тест</p>
+                            <p>Тест</p>
+                        </div>
                     </div>
 
-                    {accordionData.map(({title, content}, number) =>
-                        <Accordion title={title} content={content} key={number}/>
-                    )}
+                    <div className={style.accordion}>
+                        {accordionData.map(({title, content}, number) =>
+                            <Accordion title={title} content={content} key={number}/>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
