@@ -2,7 +2,6 @@ import React from 'react';
 import style from './ProductCard.module.scss'
 import {useNavigate} from 'react-router-dom'
 import {PRODUCT_ROUTE} from "../../utils/consts";
-// import productImg from '../../resources/img/plant1.png'
 
 const ProductCard = ({item}) => {
     const navigate = useNavigate();

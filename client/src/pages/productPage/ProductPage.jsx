@@ -47,17 +47,14 @@ const ProductPage = () => {
                         <div className={style.paramWrapper}>
                             <h3>Размер</h3>
                             <p>10см</p>
-                            <p>10см</p>
                         </div>
                         <div className={style.paramWrapper}>
                             <h3>Цвет</h3>
-                            <p>Тест</p>
-                            <p>Тест</p>
+                            <p>Зеленый</p>
                         </div>
                         <div className={style.paramWrapper}>
                             <h3>Количество</h3>
-                            <p>Тест</p>
-                            <p>Тест</p>
+                            <p>10шт</p>
                         </div>
                     </div>
 
