@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import style from './Header.module.scss'
 import { Link } from "react-router-dom";
 import {HOME_ROUTE, PRODUCTS_ROUTE} from "../../utils/consts";
@@ -6,8 +6,13 @@ import searchIcon from '../../resources/img/icons/search_FILL0_wght100_GRAD200_o
 import accountIcon from '../../resources/img/icons/account_circle_FILL0_wght100_GRAD200_opsz48.png';
 import callIcon from '../../resources/img/icons/call_FILL0_wght100_GRAD200_opsz48.png';
 import cartIcon from '../../resources/img/icons/shopping_bag_FILL0_wght100_GRAD200_opsz48.png';
+import Search from "../ui/Search";
+import search from "../ui/Search";
+import {Context} from "../../index";
 
 const Header = () => {
+    const {user} = useContext(Context);
+
     return (
         <div className='container'>
             <header className={style.header}>
@@ -40,7 +45,8 @@ const Header = () => {
                     </ul>
                     <ul className={[style.iconsList, style.icons].join(' ')}>
                         <li className={style.item}>
-                            <input className={style.navIcon} type="image" alt='search' src={searchIcon} />
+                            <Search className={style.navIcon} src={searchIcon} />
+                            {/*<input className={style.navIcon} type="image" alt='search' src={searchIcon} />*/}
                         </li>
                         <li className={style.item}>
                             <input className={style.navIcon} type="image" alt='account' src={accountIcon} />
@@ -51,7 +57,6 @@ const Header = () => {
                         <li className={style.item}>
                             <input className={style.navIcon} type="image" alt='cart' src={cartIcon} />
                         </li>
-
                     </ul>
                 </nav>
             </header>

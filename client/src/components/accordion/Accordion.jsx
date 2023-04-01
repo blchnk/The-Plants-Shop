@@ -30,7 +30,7 @@ const Accordion = ({title, content}) => {
                 </animated.svg>
             </div>
 
-            <animated.div ref={ref} style={toggleAnimation} className={styles.content}>
+            <animated.div ref={ref} style={toggleAnimation}>
                 {content}
             </animated.div>
         </div>

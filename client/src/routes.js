@@ -12,9 +12,8 @@ import AdminPage from "./pages/adminPage/AdminPage";
 import CartPage from "./pages/cartPage/CartPage";
 import ProductsPage from "./pages/productsPage/ProductsPage";
 import ProductPage from "./pages/productPage/ProductPage";
-import RegistrationPage from "./pages/registration/RegistrationPage";
-import LoginPage from "./pages/loginPage/LoginPage";
 import MainPage from "./pages/mainPage/MainPage";
+import AuthPage from "./pages/authPage/AuthPage";
 
 export const authRoutes = [
     {
@@ -41,15 +40,11 @@ export const publicRoutes = [
         component: <ProductPage/>
     },
     {
-        path: CART_ROUTE,
-        component: <CartPage/>
-    },
-    {
         path: REGISTRATION_ROUTE,
-        component: <RegistrationPage/>
+        component: <AuthPage/>
     },
     {
         path: LOGIN_ROUTE,
-        component: <LoginPage/>
+        component: <AuthPage/>
     }
 ]
