@@ -1,0 +1,24 @@
+.otherPromoWrapper{
+  margin: 5rem 0;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.textBlock{
+  width: 50%;
+
+  p{
+    margin: 0 0 0.5rem;
+
+  }
+}
+
+.imgBlock{
+
+  img{
+    flex: 0 0 50%;
+    height: auto;
+  }
+}
+
