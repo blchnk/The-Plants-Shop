@@ -1,0 +1,42 @@
+.auth{
+  display: flex;
+  justify-content: center; /* Выравнивание элементов по горизонтали */
+  align-items: center; /* Выравнивание элементов по вертикали */
+  height: 50vh;
+}
+
+.card{
+  width: 600px;
+  border: 1px solid lightgray;
+  border-radius: 2px;
+  padding: 1rem 1.5rem;
+}
+
+.authForm{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 0 0 1rem;
+
+  h2{
+    font-weight: 600;
+  }
+
+  input{
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
+
+.colorBlue{
+  color: #4782f3;
+}
+
+.sendBtn{
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 0.5rem 0.8rem;
+
+}
+

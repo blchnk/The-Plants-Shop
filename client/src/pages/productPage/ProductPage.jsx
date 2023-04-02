@@ -9,15 +9,15 @@ const ProductPage = () => {
     const accordionData = [
         {
             title: 'Section 1',
-            content: loremIpsum
+            content: loremIpsum()
         },
         {
             title: 'Section 2',
-            content: loremIpsum
+            content: loremIpsum()
         },
         {
             title: 'Section 3',
-            content: loremIpsum
+            content: loremIpsum()
         }
     ];
 
