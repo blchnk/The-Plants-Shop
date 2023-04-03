@@ -4,6 +4,7 @@ const cors = require('cors'); // enabling CORS for any unknown
 const fileUpload = require('express-fileupload');
 const router = require('./routes/index');
 const path = require('path');
+const errorHandler = require('./middleware/ErrorHandlingMiddleware');
 
 const sequelize = require('./db')
 const models = require('./models/models');
@@ -16,6 +17,8 @@ app.use(express.json());
 app.use(express.static(path.resolve(__dirname, 'static')));
 app.use(fileUpload({}));
 app.use('/api', router);
+
+app.use(errorHandler);
 
 const start = async () => {
     try {
