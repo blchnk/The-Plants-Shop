@@ -1,6 +1,6 @@
-import { Product } from '../models/models';
-import { resolve } from 'path';
-import { v4 } from 'uuid';
+const {Product} = require('../models/models');
+const {resolve} = require('path');
+const {v4} = require('uuid');
 
 class ProductController {
     async create(req, res) {
@@ -38,4 +38,4 @@ class ProductController {
     }
 }
 
-export default new ProductController()
+module.exports = new ProductController()
