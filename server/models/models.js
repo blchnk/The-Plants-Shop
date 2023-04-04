@@ -9,6 +9,7 @@ const User = sequalize.define('user', {
     },
     name: {
         type: DataTypes.STRING,
+        allowNull: false,
     },
     email: {
         type: DataTypes.STRING,
@@ -53,12 +54,15 @@ const Product  = sequalize.define('product', {
     },
     name: {
         type: DataTypes.STRING,
+        allowNull: false,
     },
     price: {
         type: DataTypes.INTEGER,
+        allowNull: false,
     },
     img: {
         type: DataTypes.STRING,
+        allowNull: false,
     }
 })
 
@@ -67,6 +71,14 @@ const ProductInfo = sequalize.define('product_Info', {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
+    },
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 })
 
@@ -79,6 +91,7 @@ const Type = sequalize.define('type', {
     name: {
         type: DataTypes.STRING,
         unique: true,
+        allowNull: false,
     }
 })
 
@@ -114,6 +127,7 @@ const Color = sequalize.define('color', {
     },
     name: {
         type: DataTypes.STRING,
+        allowNull: false,
     }
 })
 
@@ -125,6 +139,7 @@ const Size = sequalize.define('size', {
     },
     name: {
         type: DataTypes.STRING,
+        allowNull: false,
     }
 })
 
@@ -136,6 +151,7 @@ const Variety = sequalize.define('variety', {
     },
     name: {
         type: DataTypes.STRING,
+        allowNull: false,
     }
 })
 
