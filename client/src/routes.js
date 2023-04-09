@@ -1,4 +1,5 @@
 import {
+    ACCOUNT_ROUTE,
     ADMIN_ROUTE,
     CART_ROUTE,
     HOME_ROUTE,
@@ -14,6 +15,7 @@ import ProductsPage from "./pages/productsPage/ProductsPage";
 import ProductPage from "./pages/productPage/ProductPage";
 import MainPage from "./pages/mainPage/MainPage";
 import AuthPage from "./pages/authPage/AuthPage";
+import AccountPage from "./pages/accountPage/AccountPage";
 
 export const authRoutes = [
     {
@@ -23,7 +25,8 @@ export const authRoutes = [
     {
         path: CART_ROUTE,
         component: <CartPage/>
-    }
+    },
+
 ]
 
 export const publicRoutes = [
@@ -46,5 +49,9 @@ export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
         component: <AuthPage/>
+    },
+    {
+        path: ACCOUNT_ROUTE,
+        component: <AccountPage/>
     }
 ]

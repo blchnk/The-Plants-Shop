@@ -1,17 +1,19 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import style from './Header.module.scss'
 import {Link} from "react-router-dom";
-import {HOME_ROUTE, LOGIN_ROUTE, PRODUCTS_ROUTE} from "../../utils/consts";
+import {ACCOUNT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PRODUCTS_ROUTE} from "../../utils/consts";
 import searchIcon from '../../resources/img/icons/search_FILL0_wght100_GRAD200_opsz48.png';
 import accountIcon from '../../resources/img/icons/account_circle_FILL0_wght100_GRAD200_opsz48.png';
 import callIcon from '../../resources/img/icons/call_FILL0_wght100_GRAD200_opsz48.png';
 import cartIcon from '../../resources/img/icons/shopping_bag_FILL0_wght100_GRAD200_opsz48.png';
 import Search from "../ui/Search";
 import {useNavigate} from 'react-router-dom'
+import {Context} from "../../index";
 
 
 const Header = () => {
     const navigate = useNavigate();
+    const user = useContext(Context);
 
     return (
         <div className='container'>
@@ -52,7 +54,7 @@ const Header = () => {
                             <input className={style.navIcon}
                                    type="image" alt='account'
                                    src={accountIcon}
-                                   onClick={() => navigate(LOGIN_ROUTE)}/>
+                                   onClick={() => {!user.user.isAuth ? navigate(LOGIN_ROUTE) : navigate(ACCOUNT_ROUTE)}}/>
                         </li>
                         <li className={style.item}>
                             <input className={style.navIcon}
