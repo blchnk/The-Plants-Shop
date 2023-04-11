@@ -4,6 +4,7 @@ export default class ProductStore {
     constructor() {
         this._products = [];
         this._types = [];
+        this._selectedType = {};
         makeAutoObservable(this);
     }
 
@@ -19,6 +20,14 @@ export default class ProductStore {
     }
     get types() {
         return this._types;
+    }
+
+    get selectedType() {
+        return this._selectedType;
+    }
+
+    setSelectedType(type) {
+        this._selectedType = type;
     }
 }
 

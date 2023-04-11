@@ -3,19 +3,14 @@ import {Context} from "../../index";
 import style from './CreateProduct.module.scss';
 import {observer} from "mobx-react-lite";
 import Dropdown from '../dropdown/Dropdown';
-import {fetchTypes} from "../../api/productAPI";
+import {createProduct, fetchProducts, fetchTypes} from "../../api/productAPI";
 
 const CreateProduct = observer(({isActive, setActive}) => {
     const {product} = useContext(Context);
-
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [file, setFile] = useState(null);
     const [info, setInfo] = useState([]);
-
-    useEffect(() => {
-        fetchTypes().then(data => product.setTypes(data))
-    }, []);
 
     const selectFile = e => {
         setFile(e.target.files[0])
@@ -33,15 +28,15 @@ const CreateProduct = observer(({isActive, setActive}) => {
         setInfo(info.filter(item => item.number !== number))
     }
 
-    // const addProduct = () => {
-    //     const formData = new FormData()
-    //     formData.append('name', name)
-    //     formData.append('price', `${price}`)
-    //     formData.append('img', file)
-    //     formData.append('typeId', device.selectedType.id)
-    //     formData.append('info', JSON.stringify(info))
-    //     createProduct(formData).then(data => onHide())
-    // }
+    const addProduct = () => {
+        const formData = new FormData()
+        formData.append('name', name)
+        formData.append('price', `${price}`)
+        formData.append('img', file)
+        formData.append('typeId', product.selectedType.id)
+        formData.append('info', JSON.stringify(info))
+        createProduct(formData).then(data => setActive(false))
+    }
 
     return (
         <div className={isActive ? [style.bgModal, style.active].join(' ') : style.bgModal}
@@ -59,12 +54,12 @@ const CreateProduct = observer(({isActive, setActive}) => {
                            value={price}
                            onChange={(e) => setPrice(Number(e.target.value))}
                     />
-                    <Dropdown options={product.types} placeholder='Введите тип товара'/>
+                    <Dropdown options={product.types} product={product} placeholder='Введите тип товара'/>
                     <input type="file"
-                           onChange={selectFile}/>
+                           onChange={selectFile}
+                    />
                     <button type='button'
-                            onClick={addInfo}
-                    >
+                            onClick={addInfo}>
                         Добавить новое свойство
                     </button>
                     {info.map((item) =>
@@ -81,8 +76,7 @@ const CreateProduct = observer(({isActive, setActive}) => {
                             />
                             <button className={style.red}
                                     onClick={() => removeInfo(item.number)}
-                                    type="button"
-                            >
+                                    type="button">
                                 Удалить
                             </button>
                         </div>)
@@ -90,7 +84,12 @@ const CreateProduct = observer(({isActive, setActive}) => {
                 </form>
                 <div className={style.btnsWrapper}>
                     <button className={style.red} onClick={() => setActive(false)}>Закрыть</button>
-                    <button className={style.green} onClick={() => setActive(false)}>Добавить</button>
+                    <button className={style.green} onClick={() => {
+                        setActive(false);
+                        addProduct();
+                    }}>
+                        Добавить
+                    </button>
                 </div>
             </div>
         </div>

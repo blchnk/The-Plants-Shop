@@ -1,17 +1,34 @@
-const {Product} = require('../models/models');
+const {Product, ProductInfo} = require('../models/models');
 const {resolve} = require('path');
 const {v4} = require('uuid');
+const {badRequest} = require("../error/ApiError");
 
 class ProductController {
-    async create(req, res) {
-        const {name, price, typeId} = req.body;
-        const {img} = req.files;
-        console.log(img);
-        let fileName = v4() + ".jpg";
-        await img.mv(resolve(__dirname, '..', 'static', fileName));
+    async create(req, res, next) {
+        try {
+            let {name, price, typeId, info} = req.body;
+            const {img} = req.files;
+            console.log(img);
+            let fileName = v4() + ".jpg";
+            await img.mv(resolve(__dirname, '..', 'static', fileName));
 
-        const product = await Product.create({name, price, typeId, img: fileName});
-        res.json(product);
+            const product = await Product.create({name, price, typeId, img: fileName});
+
+            if (info) {
+                info = JSON.parse(info)
+                info.forEach(i =>
+                    ProductInfo.create({
+                        title: i.title,
+                        description: i.description,
+                        productId: product.id
+                    })
+                )
+            }
+
+            return res.json(product);
+        } catch (e) {
+            next(badRequest(e.message))
+        }
     }
 
     async getAll(req, res) {

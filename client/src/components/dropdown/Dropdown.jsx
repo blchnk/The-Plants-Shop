@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import Select from 'react-select';
 
-const Dropdown = ({options, placeholder}) => {
+const Dropdown = ({options, placeholder, product}) => {
+    const handleChange = (e) => {
+        product.setSelectedType({id: e.id, name: e.name});
+    }
+
     return (
         <>
             <Select
@@ -14,17 +18,17 @@ const Dropdown = ({options, placeholder}) => {
                 getOptionLabel={options => options.name}
                 getOptionValue={options => options.name}
                 options={options}
+                maxMenuHeight={170}
+                onChange={handleChange}
             />
 
-            <div
-                style={{
+            <div style={{
                     color: 'hsl(0, 0%, 40%)',
                     display: 'inline-block',
                     fontSize: 12,
                     fontStyle: 'italic',
                     marginTop: '1em',
-                }}
-            >
+                }}>
 
             </div>
         </>

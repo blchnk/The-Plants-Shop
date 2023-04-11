@@ -1,9 +1,18 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import style from './AdminPage.module.scss';
 import CreateProduct from "../../components/modals/CreateProduct";
 import CreateType from "../../components/modals/CreateType";
+import {fetchProducts, fetchTypes} from "../../api/productAPI";
+import {Context} from "../../index";
 
 const AdminPage = () => {
+    const {product} = useContext(Context);
+
+    useEffect(() => {
+        fetchTypes().then(data => product.setTypes(data));
+        fetchProducts().then(data => product.setProducts(data));
+    }, [product.types]);
+
     const [productModalIsVisible, setProductModalIsVisible] = useState(false);
     const [typeModalIsVisible, setTypeModalIsVisible] = useState(false);
 
