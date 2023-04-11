@@ -1,10 +1,17 @@
 import style from './ProductPage.module.scss';
 import Accordion from "../../components/accordion/Accordion";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {loremIpsum} from "lorem-ipsum";
+import {useParams} from "react-router-dom";
+import {fetchOneProduct} from "../../api/productAPI";
 
 const ProductPage = () => {
-    const product = {id: 1, name: 'Aglaonema', price: '2500', img: 'plant1.png'};
+    const [product, setProduct] = useState({});
+    const {id} = useParams();
+
+    useEffect(() => {
+        fetchOneProduct(id).then(data => setProduct(data));
+    }, [])
 
     const accordionData = [
         {
@@ -25,7 +32,7 @@ const ProductPage = () => {
         <div className='container'>
             <div className={style.contentWrapper}>
                 <div className={style.imgBlock}>
-                    <img src={require('../../resources/img/' + product.img)} alt=""/>
+                    <img src={process.env.REACT_APP_API_URL + product.img} alt=""/>
                 </div>
                 <div className={style.infoBlock}>
                     <h2 className={style.name}>{product.name}</h2>

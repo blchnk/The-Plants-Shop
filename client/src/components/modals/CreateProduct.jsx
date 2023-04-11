@@ -1,8 +1,9 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Context} from "../../index";
 import style from './CreateProduct.module.scss';
 import {observer} from "mobx-react-lite";
 import Dropdown from '../dropdown/Dropdown';
+import {fetchTypes} from "../../api/productAPI";
 
 const CreateProduct = observer(({isActive, setActive}) => {
     const {product} = useContext(Context);
@@ -11,6 +12,10 @@ const CreateProduct = observer(({isActive, setActive}) => {
     const [price, setPrice] = useState(0);
     const [file, setFile] = useState(null);
     const [info, setInfo] = useState([]);
+
+    useEffect(() => {
+        fetchTypes().then(data => product.setTypes(data))
+    }, []);
 
     const selectFile = e => {
         setFile(e.target.files[0])

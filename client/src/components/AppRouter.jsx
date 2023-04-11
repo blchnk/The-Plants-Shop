@@ -1,11 +1,20 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Route, Routes} from "react-router-dom";
 import {authRoutes, publicRoutes} from "../routes";
 import MainPage from "../pages/mainPage/MainPage";
 import {Context} from "../index";
+import {check} from "../api/userAPI";
+import {observer} from "mobx-react-lite";
 
-const AppRouter = () => {
+const AppRouter = observer(() => {
     const {user} = useContext(Context);
+
+    useEffect(() => {
+        check().then(data => {
+            user.setUser(data);
+            user.setIsAuth(true);
+        })
+    }, [])
 
     return (
         <Routes>
@@ -18,7 +27,7 @@ const AppRouter = () => {
             <Route path={'*'} element={<MainPage/>} />
         </Routes>
     );
-};
+});
 
 export default AppRouter;
 

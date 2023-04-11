@@ -4,6 +4,7 @@ import style from './CreateType.module.scss';
 const CreateType = ({isActive, setActive}) => {
     const [value, setValue] = useState('');
 
+
     const addType = () => {
         // createType({name: value}).then(data => {
         //     setValue('');

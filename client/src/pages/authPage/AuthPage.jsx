@@ -7,7 +7,7 @@ import {observer} from "mobx-react-lite";
 import {login, registration} from "../../api/userAPI";
 
 const AuthPage = observer(() => {
-    const user = useContext(Context);
+    const {user} = useContext(Context);
     const navigate = useNavigate();
     const location = useLocation();
     const isLogin = location.pathname === LOGIN_ROUTE;
@@ -21,13 +21,13 @@ const AuthPage = observer(() => {
                 data = await login(email, password);
                 navigate(PRODUCTS_ROUTE);
                 alert('Вы успешно авторизовались');
+                user.setIsAuth(true);
             } else {
                 data = await registration(email, password);
                 alert('Регистрация прошла успешно');
                 console.log(data);
             }
-            user.user.setUser(data);
-            user.user.setIsAuth(true);
+            user.setUser(data);
         } catch (e) {
             alert(e.response.data.message);
         }
@@ -56,10 +56,16 @@ const AuthPage = observer(() => {
                     <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'start'}}>
                         {isLogin
                             ?
-                            <div>Нет аккаунта? <NavLink to={REGISTRATION_ROUTE}
-                                                        className={style.colorBlue}>Зарегистрируйся!</NavLink></div>
+                            <div>Нет аккаунта?
+                                <NavLink to={REGISTRATION_ROUTE}
+                                         className={style.colorBlue}>
+                                    Зарегистрируйся!
+                                </NavLink></div>
                             :
-                            <div>Есть аккаунт? <NavLink to={LOGIN_ROUTE} className={style.colorBlue}>Войдите!</NavLink>
+                            <div>Есть аккаунт?
+                                <NavLink to={LOGIN_ROUTE} className={style.colorBlue}>
+                                    Войдите!
+                                </NavLink>
                             </div>
                         }
                         <button className={style.sendBtn} onClick={auth}>{isLogin ? 'Войти' : 'Регистрация'}</button>

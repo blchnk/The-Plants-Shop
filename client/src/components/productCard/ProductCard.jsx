@@ -8,7 +8,7 @@ const ProductCard = ({item}) => {
 
     return (
         <div className={style.productCard} onClick={() => navigate(PRODUCT_ROUTE + '/' + item.id)}>
-            <img src={require('../../resources/img/' + item.img)} alt="product"/>
+            <img src={process.env.REACT_APP_API_URL + item.img} alt="product"/>
             <div className={style.cardTextBlock}>
                 <p className={style.title}>{item.name}</p>
                 <p className={style.price}>{item.price}₽</p>

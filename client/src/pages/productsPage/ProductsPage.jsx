@@ -1,12 +1,18 @@
-import React, {useContext} from 'react';
-import style from './ProductsPage.module.scss'
+import React, {useContext, useEffect} from 'react';
+import style from './ProductsPage.module.scss';
 import SortBar from "../../components/sortBar/SortBar";
 import ProductCard from "../../components/productCard/ProductCard";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
+import {fetchProducts, fetchTypes} from "../../api/productAPI";
 
 const ProductsPage = observer(() => {
     const {product} = useContext(Context);
+
+    useEffect(() => {
+        fetchTypes().then(data => product.setTypes(data));
+        fetchProducts().then(data => product.setProducts(data));
+    }, []);
 
     return (
         <div className='container'>
