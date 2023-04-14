@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ProductProperty = ({property}) => {
+const ProductProperty = ({propertyTitle, propertyName}) => {
     return (
         <>
             <div style={{display: 'flex'}}>
-                <h3 style={{width: '150px'}}>{property.title}</h3>
-                <p>{property.description}</p>
+                <h3 style={{width: '150px'}}>{propertyTitle}</h3>
+                <p>{propertyName}</p>
             </div>
         </>
     );

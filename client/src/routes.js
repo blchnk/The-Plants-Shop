@@ -39,7 +39,7 @@ export const publicRoutes = [
     },
     {
         path: PRODUCTS_ROUTE,
-        component: <ProductsPage/>
+        component: <ProductsPage typeId={1}/>
     },
     {
         path: POTS_ROUTE,

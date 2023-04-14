@@ -1,22 +1,22 @@
 import style from './ProductPage.module.scss';
 import Accordion from "../../components/accordion/Accordion";
 import React, {useEffect, useState} from "react";
-import productProperty from '../../components/productProperty/productProperty'
+import ProductProperty from '../../components/productProperty/ProductProperty'
 import {loremIpsum} from "lorem-ipsum";
 import {useParams} from "react-router-dom";
-import {fetchOneProduct} from "../../api/productAPI";
+import {fetchOneProduct, fetchInfo} from "../../api/productAPI";
 
 const ProductPage = () => {
-    const [product, setProduct] = useState({});
-    const [productInfo, setProductInfo] = useState({});
+    const [product, setProduct] = useState([]);
+    const [productInfo, setProductInfo] = useState([]);
     const {id} = useParams();
 
     useEffect(() => {
-        fetchOneProduct(id).then(data => {
-            setProduct(data);
-            console.log(product);
+        fetchOneProduct(id).then(data => setProduct(data));
+        fetchInfo(id).then(data => {
+            setProductInfo(data)
+            console.log(data)
         });
-
     }, [])
 
     const accordionData = [
@@ -45,20 +45,18 @@ const ProductPage = () => {
                     <p className={style.price}>{product.price} руб</p>
                     <p className={style.description}>{loremIpsum()}</p>
                     <div className={style.paramOptionsBlock}>
-                        {/*<div className={style.paramWrapper}>*/}
-                        {/*    <h3>Размер</h3>*/}
-                        {/*    <p>10см</p>*/}
-                        {/*</div>*/}
-                        {/*{*/}
-                        {/*    product.map(item =>*/}
-                        {/*        <productProperty property={item.info} key={item.id}/>)*/}
-                        {/*}*/}
+                        {
+                            productInfo.map((item, number) =>
+                                <ProductProperty propertyTitle={item.title} propertyName={item.description}
+                                                 key={number}/>)
+                        }
                     </div>
 
                     <div className={style.accordion}>
-                        {accordionData.map(({title, content}, number) =>
-                            <Accordion title={title} content={content} key={number}/>
-                        )}
+                        {
+                            accordionData.map(({title, content}, number) =>
+                                <Accordion title={title} content={content} key={number}/>)
+                        }
                     </div>
                 </div>
             </div>

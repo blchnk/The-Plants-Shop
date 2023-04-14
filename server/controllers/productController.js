@@ -51,6 +51,7 @@ class ProductController {
         const product = await Product.findOne({
             where: {id}
         });
+        const productInfo = await ProductInfo.findOne({where: {productId: id}});
 
         return res.json(product);
     }

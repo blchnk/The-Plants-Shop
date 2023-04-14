@@ -7,8 +7,11 @@ class TypeController {
         return res.json(type);
     }
 
-    async getType(req, res) {
+    async getOne(req, res) {
+        const {id} = req.params;
+        const type = await Type.findOne({where: {id}});
 
+        return res.json(type);
     }
 
     async getAll(req, res) {
