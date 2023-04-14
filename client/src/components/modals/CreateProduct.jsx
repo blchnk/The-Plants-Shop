@@ -8,7 +8,7 @@ import {createProduct, fetchProducts, fetchTypes} from "../../api/productAPI";
 const CreateProduct = observer(({isActive, setActive}) => {
     const {product} = useContext(Context);
     const [name, setName] = useState('');
-    const [price, setPrice] = useState(0);
+    const [price, setPrice] = useState('');
     const [file, setFile] = useState(null);
     const [info, setInfo] = useState([]);
 
