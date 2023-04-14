@@ -35,13 +35,14 @@ class ProductController {
         const {typeId} = req.query;
         let products;
 
+        if (typeId) {
+            products = await Product.findAll({where: {typeId}});
+        }
+
         if (!typeId) {
             products = await Product.findAll();
         }
 
-        if (typeId) {
-            products = await Product.findAll({where: {typeId}});
-        }
         return res.json(products);
     }
 

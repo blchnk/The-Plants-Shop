@@ -1,16 +1,22 @@
 import style from './ProductPage.module.scss';
 import Accordion from "../../components/accordion/Accordion";
 import React, {useEffect, useState} from "react";
+import productProperty from '../../components/productProperty/productProperty'
 import {loremIpsum} from "lorem-ipsum";
 import {useParams} from "react-router-dom";
 import {fetchOneProduct} from "../../api/productAPI";
 
 const ProductPage = () => {
     const [product, setProduct] = useState({});
+    const [productInfo, setProductInfo] = useState({});
     const {id} = useParams();
 
     useEffect(() => {
-        fetchOneProduct(id).then(data => setProduct(data));
+        fetchOneProduct(id).then(data => {
+            setProduct(data);
+            console.log(product);
+        });
+
     }, [])
 
     const accordionData = [
@@ -39,18 +45,14 @@ const ProductPage = () => {
                     <p className={style.price}>{product.price} руб</p>
                     <p className={style.description}>{loremIpsum()}</p>
                     <div className={style.paramOptionsBlock}>
-                        <div className={style.paramWrapper}>
-                            <h3>Размер</h3>
-                            <p>10см</p>
-                        </div>
-                        <div className={style.paramWrapper}>
-                            <h3>Цвет</h3>
-                            <p>Зеленый</p>
-                        </div>
-                        <div className={style.paramWrapper}>
-                            <h3>Количество</h3>
-                            <p>10шт</p>
-                        </div>
+                        {/*<div className={style.paramWrapper}>*/}
+                        {/*    <h3>Размер</h3>*/}
+                        {/*    <p>10см</p>*/}
+                        {/*</div>*/}
+                        {/*{*/}
+                        {/*    product.map(item =>*/}
+                        {/*        <productProperty property={item.info} key={item.id}/>)*/}
+                        {/*}*/}
                     </div>
 
                     <div className={style.accordion}>

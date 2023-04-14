@@ -1,7 +1,14 @@
 import React, {useContext} from 'react';
 import style from './Header.module.scss'
 import {Link} from "react-router-dom";
-import {ACCOUNT_ROUTE, HOME_ROUTE, LOGIN_ROUTE, PRODUCTS_ROUTE, REGISTRATION_ROUTE} from "../../utils/consts";
+import {
+    ACCOUNT_ROUTE, CARE_ROUTE,
+    CART_ROUTE,
+    HOME_ROUTE,
+    POTS_ROUTE,
+    PRODUCTS_ROUTE,
+    REGISTRATION_ROUTE
+} from "../../utils/consts";
 import searchIcon from '../../resources/img/icons/search_FILL0_wght100_GRAD200_opsz48.png';
 import accountIcon from '../../resources/img/icons/account_circle_FILL0_wght100_GRAD200_opsz48.png';
 import callIcon from '../../resources/img/icons/call_FILL0_wght100_GRAD200_opsz48.png';
@@ -29,10 +36,10 @@ const Header = () => {
                             <Link className={style.linkToPage} to={PRODUCTS_ROUTE}>Растения</Link>
                         </li>
                         <li className={style.item}>
-                            <a href="/">Уход</a>
+                            <Link className={style.linkToPage} to={CARE_ROUTE}>Уход</Link>
                         </li>
                         <li className={style.item}>
-                            <a href="/">Горшки</a>
+                            <Link className={style.linkToPage} to={POTS_ROUTE}>Горшки</Link>
                         </li>
                         <li className={style.item}>
                             <a href="/">Блог</a>
@@ -55,7 +62,6 @@ const Header = () => {
                                    src={accountIcon}
                                    onClick={() => {
                                        user.isAuth ? navigate(ACCOUNT_ROUTE) : navigate(REGISTRATION_ROUTE);
-                                       // console.log('isAuth ' + user.isAuth);
                                    }}/>
                         </li>
                         <li className={style.item}>

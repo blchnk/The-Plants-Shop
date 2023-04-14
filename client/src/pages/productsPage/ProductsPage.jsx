@@ -5,14 +5,16 @@ import ProductCard from "../../components/productCard/ProductCard";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import {fetchProducts, fetchTypes} from "../../api/productAPI";
+import {useLocation, useParams} from "react-router-dom";
 
-const ProductsPage = observer(() => {
+const ProductsPage = observer(({typeId}) => {
     const {product} = useContext(Context);
+    const location = useLocation();
 
     useEffect(() => {
         fetchTypes().then(data => product.setTypes(data));
-        fetchProducts().then(data => product.setProducts(data));
-    }, []);
+        fetchProducts(typeId).then(data => product.setProducts(data));
+    }, [location.pathname]);
 
     return (
         <div className='container'>

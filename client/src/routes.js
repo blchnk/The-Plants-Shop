@@ -1,9 +1,9 @@
 import {
     ACCOUNT_ROUTE,
-    ADMIN_ROUTE,
+    ADMIN_ROUTE, CARE_ROUTE,
     CART_ROUTE,
     HOME_ROUTE,
-    LOGIN_ROUTE,
+    LOGIN_ROUTE, POTS_ROUTE,
     PRODUCT_ROUTE,
     PRODUCTS_ROUTE,
     REGISTRATION_ROUTE
@@ -30,7 +30,6 @@ export const authRoutes = [
         path: ACCOUNT_ROUTE,
         component: <AccountPage/>
     }
-
 ]
 
 export const publicRoutes = [
@@ -41,6 +40,14 @@ export const publicRoutes = [
     {
         path: PRODUCTS_ROUTE,
         component: <ProductsPage/>
+    },
+    {
+        path: POTS_ROUTE,
+        component: <ProductsPage typeId={2}/>
+    },
+    {
+        path: CARE_ROUTE,
+        component: <ProductsPage typeId={3}/>
     },
     {
         path: PRODUCT_ROUTE + '/:id',
@@ -54,5 +61,4 @@ export const publicRoutes = [
         path: LOGIN_ROUTE,
         component: <AuthPage/>
     },
-
 ]
