@@ -19,6 +19,10 @@ const ProductPage = () => {
         });
     }, [])
 
+    const addToCart = () => {
+
+    }
+
     const accordionData = [
         {
             title: 'Section 1',
@@ -58,6 +62,12 @@ const ProductPage = () => {
                                 <Accordion title={title} content={content} key={number}/>)
                         }
                     </div>
+
+                    <button style={{width: '40%', padding: '1rem'}}
+                            className='btn btnAnimation'
+                            onClick={addToCart}>
+                        Добавить в корзину
+                    </button>
                 </div>
             </div>
         </div>

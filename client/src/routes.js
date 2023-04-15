@@ -23,10 +23,6 @@ export const authRoutes = [
         component: <AdminPage/>
     },
     {
-        path: CART_ROUTE,
-        component: <CartPage/>
-    },
-    {
         path: ACCOUNT_ROUTE,
         component: <AccountPage/>
     }
@@ -60,5 +56,9 @@ export const publicRoutes = [
     {
         path: LOGIN_ROUTE,
         component: <AuthPage/>
+    },
+    {
+        path: CART_ROUTE,
+        component: <CartPage/>
     },
 ]

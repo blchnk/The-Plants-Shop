@@ -74,6 +74,7 @@ const Header = () => {
                             <input className={style.navIcon}
                                    type="image"
                                    alt='cart'
+                                   onClick={() => navigate(CART_ROUTE)}
                                    src={cartIcon}/>
                         </li>
                     </ul>
