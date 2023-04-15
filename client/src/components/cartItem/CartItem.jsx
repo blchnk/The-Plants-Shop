@@ -16,7 +16,7 @@ const CartItem = (props) => {
                     <div className={style.textBlock}>
                         <div>
                             <h3 className={style.title}>Пшеничный папоротник</h3>
-                            <span style={{color: '#7a7a7a'}}>qnx56x2w09</span>
+                            <span style={{opacity: '50%'}}>qnx56x2w09</span>
 
                             <div style={{display: "flex", alignItems: 'center', marginTop: '1rem'}}>
                                 <p className={style.quantity}>Количество</p>
@@ -25,14 +25,14 @@ const CartItem = (props) => {
                                 <img className={style.plusIcon} src={plus} alt="increase"/>
                             </div>
                         </div>
-                        <p>Стоимость единицы товара <span style={{fontWeight: '600'}}>100Р</span></p>
+                        <p>Стоимость единицы товара <span style={{fontWeight: '600'}}>100&#8381;</span></p>
                     </div>
                 </div>
                 <div className={style.blockR}>
                     <button className={style.delBtn}>
                         <img src={delBtn} alt="delete button"/>
                     </button>
-                    <p>Сумма к оплате <span style={{fontWeight: '600'}}>1000р</span></p>
+                    <p>Сумма <span style={{fontWeight: '600'}}>1000&#8381;</span></p>
                 </div>
             </div>
         </>
