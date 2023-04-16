@@ -12,7 +12,7 @@ class ProductController {
             let fileName = v4() + ".jpg";
             await img.mv(resolve(__dirname, '..', 'static', fileName));
 
-            const product = await Product.create({name, price, typeId, img: fileName});
+            const product = await Product.create({name, price, typeId, img: fileName, article: Date.now()});
 
             if (info) {
                 info = JSON.parse(info)

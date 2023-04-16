@@ -1,26 +1,27 @@
 import style from './ProductPage.module.scss';
 import Accordion from "../../components/accordion/Accordion";
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import ProductProperty from '../../components/productProperty/ProductProperty'
 import {loremIpsum} from "lorem-ipsum";
 import {useParams} from "react-router-dom";
 import {fetchOneProduct, fetchInfo} from "../../api/productAPI";
+import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
 
-const ProductPage = () => {
+const ProductPage = observer(() => {
     const [product, setProduct] = useState([]);
     const [productInfo, setProductInfo] = useState([]);
+    const {cart} = useContext(Context);
     const {id} = useParams();
 
     useEffect(() => {
         fetchOneProduct(id).then(data => setProduct(data));
-        fetchInfo(id).then(data => {
-            setProductInfo(data)
-            console.log(data)
-        });
+        fetchInfo(id).then(data => setProductInfo(data));
     }, [])
 
     const addToCart = () => {
-
+        cart.setCart(product);
+        cart.saveToLocalStorage();
     }
 
     const accordionData = [
@@ -42,7 +43,7 @@ const ProductPage = () => {
         <div className='container'>
             <div className={style.contentWrapper}>
                 <div className={style.imgBlock}>
-                    <img src={process.env.REACT_APP_API_URL + product.img} alt=""/>
+                    <img src={process.env.REACT_APP_API_URL + product.img} alt="plant"/>
                 </div>
                 <div className={style.infoBlock}>
                     <h2 className={style.name}>{product.name}</h2>
@@ -72,6 +73,6 @@ const ProductPage = () => {
             </div>
         </div>
     );
-};
+});
 
 export default ProductPage;

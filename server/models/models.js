@@ -1,5 +1,5 @@
 const sequalize = require('../db');
-const { DataTypes } = require('sequelize');
+const { DataTypes, DATE} = require('sequelize');
 
 const User = sequalize.define('user', {
     id: {
@@ -59,6 +59,10 @@ const Product  = sequalize.define('product', {
     img: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    article: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 })
 
