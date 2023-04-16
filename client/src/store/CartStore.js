@@ -5,6 +5,7 @@ export default class ProductStore {
 
     constructor() {
         makeAutoObservable(this);
+        this.loadFromLocalStorage();
     }
 
     get cart() {
@@ -35,13 +36,17 @@ export default class ProductStore {
 
     increaseCart(index) {
         this._cart[index].quantity++;
+        console.log(this._cart[index].quantity)
+        this.saveToLocalStorage();
     }
 
     decreaseCart(index) {
         this._cart[index].quantity--;
+        console.log(this._cart[index].quantity)
         if (this._cart[index].quantity === 0) {
             this._cart.splice(index, 1)
         }
+        this.saveToLocalStorage();
     }
 
     deleteCart(index) {

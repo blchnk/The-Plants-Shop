@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 import s from './CartPage.module.scss';
 import CartItem from "../../components/cartItem/CartItem";
 import {Context} from "../../index";
@@ -6,14 +6,6 @@ import {observer} from "mobx-react-lite";
 
 const CartPage = observer(() => {
     const {cart} = useContext(Context);
-
-    useEffect(() => {
-        cart.loadFromLocalStorage();
-    }, [])
-
-    useEffect(() => {
-        cart.saveToLocalStorage();
-    }, [cart.cart])
 
     const increaseCart = (index) => {
         cart.increaseCart(index)
