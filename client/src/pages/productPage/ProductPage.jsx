@@ -21,6 +21,7 @@ const ProductPage = observer(() => {
 
     const addToCart = () => {
         cart.setCart(product);
+        cart.saveToLocalStorage();
     }
 
     const accordionData = [

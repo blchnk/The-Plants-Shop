@@ -1,11 +1,12 @@
-import React, {useContext} from 'react';
+import React, {useEffect} from 'react';
 import style from "../../components/cartItem/CartItem.module.scss";
 import delBtn from '../../resources/img/icons/delete_FILL0_wght100_GRAD0_opsz48.png';
 import minus from '../../resources/img/icons/remove_FILL0_wght100_GRAD0_opsz48.svg';
 import plus from '../../resources/img/icons/add_FILL0_wght100_GRAD0_opsz48.svg';
 import {observer} from "mobx-react-lite";
 
-const CartItem = observer(({item, increaseCart, decreaseCart, index}) => {
+const CartItem = observer(({item, increaseCart, decreaseCart, deleteCart, index}) => {
+
     return (
         <>
             <div className={style.cartItemWrapper}>
@@ -30,9 +31,9 @@ const CartItem = observer(({item, increaseCart, decreaseCart, index}) => {
                 </div>
                 <div className={style.blockR}>
                     <button className={style.delBtn}>
-                        <img src={delBtn} alt="delete button"/>
+                        <img src={delBtn} alt="delete button" onClick={() => deleteCart(index)}/>
                     </button>
-                    <p>Сумма <span style={{fontWeight: '600'}}>&#8381;</span></p>
+                    <p>Сумма <span style={{fontWeight: '600'}}>{item.price * item.quantity}&#8381;</span></p>
                 </div>
             </div>
         </>

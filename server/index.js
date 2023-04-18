@@ -23,8 +23,8 @@ app.use(errorHandler);
 const start = async () => {
     try {
         await sequelize.authenticate();
-        await sequelize.sync({ force: true }); // пересоздаем таблицы БД
-        // await sequelize.sync();
+        // await sequelize.sync({ force: true }); // пересоздаем таблицы БД
+        await sequelize.sync();
         app.listen(PORT, () => {
             console.log('+---------------------------------------+');
             console.log(`Server started on port ${PORT}`);

@@ -36,13 +36,11 @@ export default class ProductStore {
 
     increaseCart(index) {
         this._cart[index].quantity++;
-        console.log(this._cart[index].quantity)
         this.saveToLocalStorage();
     }
 
     decreaseCart(index) {
         this._cart[index].quantity--;
-        console.log(this._cart[index].quantity)
         if (this._cart[index].quantity === 0) {
             this._cart.splice(index, 1)
         }
@@ -52,6 +50,7 @@ export default class ProductStore {
     deleteCart(index) {
         this._cart[index].quantity = 0;
         this._cart.splice(index, 1);
+        this.saveToLocalStorage();
     }
 
     // Метод для сохранения данных в локальное хранилище
