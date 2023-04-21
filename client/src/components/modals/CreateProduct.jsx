@@ -1,9 +1,9 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Context} from "../../index";
 import style from './CreateProduct.module.scss';
 import {observer} from "mobx-react-lite";
 import Dropdown from '../dropdown/Dropdown';
-import {createProduct, fetchProducts, fetchTypes} from "../../api/productAPI";
+import {createProduct} from "../../api/productAPI";
 
 const CreateProduct = observer(({isActive, setActive}) => {
     const {product} = useContext(Context);

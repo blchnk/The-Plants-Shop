@@ -4,6 +4,7 @@ import CreateProduct from "../../components/modals/CreateProduct";
 import CreateType from "../../components/modals/CreateType";
 import {fetchProducts, fetchTypes} from "../../api/productAPI";
 import {Context} from "../../index";
+import DeleteProduct from "../../components/modals/DeleteProduct";
 
 const AdminPage = () => {
     const {product} = useContext(Context);
@@ -15,6 +16,7 @@ const AdminPage = () => {
 
     const [productModalIsVisible, setProductModalIsVisible] = useState(false);
     const [typeModalIsVisible, setTypeModalIsVisible] = useState(false);
+    const [deleteProductModalIsVisible, setDeleteProductModalIsVisible] = useState(false);
 
     return (
         <div>
@@ -29,7 +31,7 @@ const AdminPage = () => {
                     onClick={() => setTypeModalIsVisible(true)}>
                     Добавить тип
                 </button>
-                <CreateProduct isActive={productModalIsVisible} setActive={setProductModalIsVisible} />
+                <CreateProduct isActive={productModalIsVisible} setActive={setProductModalIsVisible}/>
                 <CreateType isActive={typeModalIsVisible} setActive={setTypeModalIsVisible}/>
             </div>
         </div>

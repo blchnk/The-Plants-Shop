@@ -56,6 +56,7 @@ export default class ProductStore {
     // Метод для сохранения данных в локальное хранилище
     saveToLocalStorage = () => {
         localStorage.setItem('cart', JSON.stringify(this._cart));
+        // console.log('saveToLocalStorage')
     };
 
     // Метод для загрузки данных из локального хранилища
@@ -64,6 +65,7 @@ export default class ProductStore {
         if (savedData) {
             this._cart = JSON.parse(savedData);
         }
+        // console.log('loadFromLocalStorage')
     };
 }
 

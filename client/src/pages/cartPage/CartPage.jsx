@@ -36,9 +36,6 @@ const CartPage = observer(() => {
         if (mount.current) {
             mount.current = false;
             cart.cart.map((item) => {
-                console.log('quantity is ' + item.quantity)
-                console.log('price is ' + item.price)
-                console.log('amount is ' + amount)
                 setAmount((a) => item.quantity * item.price + a);
             })
         }
