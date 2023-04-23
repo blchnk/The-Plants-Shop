@@ -5,7 +5,7 @@ import {observer} from "mobx-react-lite";
 import Dropdown from '../dropdown/Dropdown';
 import {createProduct} from "../../api/productAPI";
 
-const CreateProduct = observer(({isActive, setActive}) => {
+const CreateProduct = observer(({setLoading, isActive, setActive}) => {
     const {product} = useContext(Context);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -87,6 +87,7 @@ const CreateProduct = observer(({isActive, setActive}) => {
                     <button className={style.green} onClick={() => {
                         setActive(false);
                         addProduct();
+                        setLoading(true);
                     }}>
                         Добавить
                     </button>

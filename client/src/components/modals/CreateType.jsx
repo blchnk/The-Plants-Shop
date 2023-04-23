@@ -3,7 +3,7 @@ import style from './CreateType.module.scss';
 import {createType} from "../../api/productAPI";
 import {observer} from "mobx-react-lite";
 
-const CreateType = observer(({isActive, setActive}) => {
+const CreateType = observer(({setLoading, isActive, setActive}) => {
     const [value, setValue] = useState('');
 
     const addType = () => {
@@ -24,7 +24,10 @@ const CreateType = observer(({isActive, setActive}) => {
                 </form>
                 <div className={style.btnsWrapper}>
                     <button type='button' className={style.red} onClick={() => setActive(false)}>Закрыть</button>
-                    <button className={style.green} onClick={addType}>Добавить</button>
+                    <button className={style.green} onClick={() => {
+                        addType();
+                        setLoading(true);
+                    }}>Добавить</button>
                 </div>
             </div>
         </div>

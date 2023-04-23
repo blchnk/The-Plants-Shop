@@ -10,3 +10,47 @@
     color: white;
   }
 }
+
+.adminPanel{
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.menu{
+  background-color: #e9ecf2;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.7rem;
+
+  button{
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  text-align: left;
+}
+
+thead{
+  background-color: #e9ecf2;
+}
+
+th {
+  padding: 10px 20px;
+}
+
+.editBtn{
+  width: 30px;
+  height: auto;
+  margin-top: 0.5rem;
+}
+
+.deleteBtn{
+  width: 30px;
+  height: auto;
+  margin-top: 0.5rem;
+}
+

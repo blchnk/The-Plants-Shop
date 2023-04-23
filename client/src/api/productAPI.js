@@ -30,5 +30,10 @@ export const fetchInfo = async (id) => {
     return data;
 }
 
+export const deleteProduct = async (id) => {
+    const {data} = await $host.delete('api/product/' + id);
+    return data;
+}
+
 
 
