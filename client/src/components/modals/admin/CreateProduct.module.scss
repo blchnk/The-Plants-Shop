@@ -1,0 +1,74 @@
+.bgModal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.bgModal.active{
+  display: flex;
+}
+
+.modalCard{
+  padding: 0.6rem 1rem;
+  width: 600px;
+  max-height: 600px;
+  background-color: white;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 3px;
+  border: solid 1.5px black;
+
+  overflow: auto;
+
+  input{
+    width: 100%;
+    padding: 0.2rem 0.5rem;
+  }
+
+  button{
+    padding: 0.5rem;
+    border: 2px solid;
+    border-radius: 3px;
+
+  }
+
+  .red{
+    border-color: red;
+    color: red;
+    transition: all ease-out 0.2s;
+    margin-right: 0.6rem;
+
+
+    &:hover{
+      background-color: red;
+      color: white;
+    }
+  }
+
+  .green{
+    border-color: green;
+    color: green;
+    transition: all ease-out 0.2s;
+
+    &:hover{
+      background-color: green;
+      color: white;
+    }
+  }
+}
+
+.btnsWrapper{
+  display: flex;
+  justify-content: end;
+  padding: 1rem 0;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

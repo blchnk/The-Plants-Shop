@@ -1,26 +1,35 @@
 import React, {useContext, useEffect, useState} from 'react';
 import style from './AdminPage.module.scss';
-import CreateProduct from "../../components/modals/CreateProduct";
-import CreateType from "../../components/modals/CreateType";
+import CreateProduct from "../../components/modals/admin/CreateProduct";
+import CreateType from "../../components/modals/admin/CreateType";
+import EditProduct from "../../components/modals/admin/EditProduct";
 import {deleteProduct, fetchProducts, fetchTypes} from "../../api/productAPI";
 import {Context} from "../../index";
+import {observer} from "mobx-react-lite";
 import editIcon from '../../resources/img/icons/edit_FILL0_wght100_GRAD0_opsz48.png';
 import deleteIcon from '../../resources/img/icons/delete_FILL0_wght100_GRAD0_opsz48.png';
-import {observer} from "mobx-react-lite";
 
 const AdminPage = observer(() => {
     const {product} = useContext(Context);
     const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        fetchTypes().then(data => product.setTypes(data));
-        fetchProducts().then(data => {
-            product.setProducts(data);
-        }).finally(() => setLoading(false))
-    }, [product.products, product.types, loading]);
+    const [editId, setEditId] = useState(0);
 
     const [productModalIsVisible, setProductModalIsVisible] = useState(false);
     const [typeModalIsVisible, setTypeModalIsVisible] = useState(false);
+    const [editModalIsVisible, setEditModalIsVisible] = useState(false);
+
+    useEffect(() => {
+        fetchTypes().then(data => product.setTypes(data));
+
+        fetchProducts().then(data => {
+            product.setProducts(data);
+        }).finally(() => setLoading(false))
+    }, [loading]);
+
+    const editHandler = (id) => {
+        setEditId(id);
+        setEditModalIsVisible(true);
+    }
 
     if (loading) {
         return <div className='container'>
@@ -35,12 +44,14 @@ const AdminPage = observer(() => {
                     <div>
                         <table>
                             <thead>
-                            <tr>
+                            <tr className={style.tableTitle}>
                                 <th>id</th>
                                 <th>Название</th>
                                 <th>Стоимость</th>
                                 <th>Изображение</th>
                                 <th>Тип</th>
+                                <th>createdAt</th>
+                                <th>updatedAt</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -51,14 +62,22 @@ const AdminPage = observer(() => {
                                     <th>{item.price}</th>
                                     <th>{item.img}</th>
                                     <th>{product.types[item.typeId - 1].name}</th>
-                                    <input className={style.editBtn} type="image" src={editIcon}/>
-                                    <input onClick={() => {
-                                        deleteProduct(item.id);
-                                        setLoading(true);
-                                    }}
-                                           className={style.deleteBtn}
+                                    <th>{item.createdAt}</th>
+                                    <th>{item.updatedAt}</th>
+                                    <input className={style.editBtn}
+                                           onClick={() => editHandler(item.id)}
+                                           type="image"
+                                           src={editIcon}
+                                           alt='edit'
+                                    />
+                                    <input className={style.deleteBtn}
+                                           onClick={() => {
+                                               deleteProduct(item.id);
+                                               setLoading(true);
+                                           }}
                                            type="image"
                                            src={deleteIcon}
+                                           alt='delete'
                                     />
                                 </tr>
                             )}
@@ -78,10 +97,19 @@ const AdminPage = observer(() => {
                             Добавить тип
                         </button>
                     </div>
-                    <CreateProduct setLoading={setLoading} isActive={productModalIsVisible}
-                                   setActive={setProductModalIsVisible}/>
-                    <CreateType setLoading={setLoading} isActive={typeModalIsVisible}
-                                setActive={setTypeModalIsVisible}/>
+                    {
+                        productModalIsVisible && <CreateProduct setLoading={setLoading}
+                                                                setActive={setProductModalIsVisible}/>
+                    }
+                    {
+                        typeModalIsVisible && <CreateType setLoading={setLoading}
+                                                          setActive={setTypeModalIsVisible}/>
+                    }
+                    {
+                        editModalIsVisible && <EditProduct setLoading={setLoading}
+                                                           setActive={setEditModalIsVisible}
+                                                           productId={editId}/>
+                    }
                 </div>
             </div>
         </>

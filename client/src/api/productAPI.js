@@ -31,7 +31,12 @@ export const fetchInfo = async (id) => {
 }
 
 export const deleteProduct = async (id) => {
-    const {data} = await $host.delete('api/product/' + id);
+    const {data} = await $authHost.delete('api/product/' + id);
+    return data;
+}
+
+export const patchProduct = async (id, updatedData) => {
+    const {data} = await $authHost.patch('api/product/' + id, updatedData);
     return data;
 }
 

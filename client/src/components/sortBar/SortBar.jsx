@@ -4,7 +4,6 @@ import style from './SortBar.module.scss'
 const SortBar = () => {
     return (
         <div className={style.sortBar}>
-
             <div className={style.sortBarItem}>
                 <h3>Разновидность</h3>
                 <div className={style.inputWrapper}>

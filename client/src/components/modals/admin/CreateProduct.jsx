@@ -1,11 +1,11 @@
 import React, {useContext, useState} from 'react';
-import {Context} from "../../index";
+import {Context} from "../../../index";
 import style from './CreateProduct.module.scss';
 import {observer} from "mobx-react-lite";
-import Dropdown from '../dropdown/Dropdown';
-import {createProduct} from "../../api/productAPI";
+import Dropdown from '../../dropdown/Dropdown';
+import {createProduct} from "../../../api/productAPI";
 
-const CreateProduct = observer(({setLoading, isActive, setActive}) => {
+const CreateProduct = observer(({setLoading, setActive}) => {
     const {product} = useContext(Context);
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
@@ -39,7 +39,7 @@ const CreateProduct = observer(({setLoading, isActive, setActive}) => {
     }
 
     return (
-        <div className={isActive ? [style.bgModal, style.active].join(' ') : style.bgModal}
+        <div className={[style.bgModal, style.active].join(' ')}
              onClick={() => setActive(false)}>
             <div className={style.modalCard} onClick={e => e.stopPropagation()}>
                 <h2>Добавить товар</h2>

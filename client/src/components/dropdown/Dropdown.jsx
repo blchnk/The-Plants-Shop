@@ -29,7 +29,6 @@ const Dropdown = ({options, placeholder, product}) => {
                     fontStyle: 'italic',
                     marginTop: '1em',
                 }}>
-
             </div>
         </>
     );

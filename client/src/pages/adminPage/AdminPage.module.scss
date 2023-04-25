@@ -39,7 +39,13 @@ thead{
 }
 
 th {
-  padding: 10px 20px;
+  padding: 10px 15px;
+  font-size: 15px;
+
+}
+
+.tableTitle > th{
+  font-weight: 500;
 }
 
 .editBtn{

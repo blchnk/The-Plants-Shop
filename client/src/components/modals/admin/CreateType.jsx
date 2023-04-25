@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import style from './CreateType.module.scss';
-import {createType} from "../../api/productAPI";
+import {createType} from "../../../api/productAPI";
 import {observer} from "mobx-react-lite";
 
-const CreateType = observer(({setLoading, isActive, setActive}) => {
+const CreateType = observer(({setLoading, setActive}) => {
     const [value, setValue] = useState('');
 
     const addType = () => {
@@ -12,7 +12,7 @@ const CreateType = observer(({setLoading, isActive, setActive}) => {
     }
 
     return (
-        <div className={isActive ? [style.bgModal, style.active].join(' ') : style.bgModal}
+        <div className={[style.bgModal, style.active].join(' ')}
              onClick={() => setActive(false)}>
             <div className={style.modalCard} onClick={e => e.stopPropagation()}>
                 <h2>Добавить тип</h2>
@@ -27,7 +27,8 @@ const CreateType = observer(({setLoading, isActive, setActive}) => {
                     <button className={style.green} onClick={() => {
                         addType();
                         setLoading(true);
-                    }}>Добавить</button>
+                    }}>Добавить
+                    </button>
                 </div>
             </div>
         </div>

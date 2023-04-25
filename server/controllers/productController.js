@@ -2,6 +2,7 @@ const {Product, ProductInfo} = require('../models/models');
 const {resolve} = require('path');
 const {v4} = require('uuid');
 const {badRequest} = require("../error/ApiError");
+const {where} = require("sequelize");
 
 class ProductController {
     async create(req, res, next) {
@@ -64,6 +65,30 @@ class ProductController {
             }
         });
         res.json(`deleted product with id ${id}`);
+    }
+
+    async updateOne(req, res) {
+        const {id} = req.params;
+        const updateOps = req.body; // получаем данные для обновления из тела запроса
+        try {
+            const product = await Product.update(updateOps, {
+                where: { id: id }
+            });
+            if (product[0] === 0) { // если ни один продукт не был изменен
+                res.status(404).json({
+                    message: 'Продукт не найден'
+                });
+            } else { // если хотя бы один продукт был изменен
+                res.status(200).json({
+                    message: 'Продукт успешно обновлен'
+                });
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+                error: error
+            });
+        }
     }
 }
 
