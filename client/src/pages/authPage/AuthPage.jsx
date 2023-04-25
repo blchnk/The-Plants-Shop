@@ -25,7 +25,6 @@ const AuthPage = observer(() => {
             } else {
                 data = await registration(email, password);
                 alert('Регистрация прошла успешно');
-                console.log(data);
             }
             user.setUser(data);
         } catch (e) {

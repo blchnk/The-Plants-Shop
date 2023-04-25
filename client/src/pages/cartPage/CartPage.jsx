@@ -15,17 +15,21 @@ const CartPage = observer(() => {
     }, [])
 
     const increaseCart = (index) => {
-        cart.increaseCart(index);
-        if (cart.cart[index]) {
-            setAmount((a) => a + cart.cart[index].price)
+        let price = 0;
+        if (mount) {
+            price = cart.cart[index].price;
         }
+        cart.increaseCart(index);
+        setAmount((a) => a + cart.cart[index].price)
     }
 
     const decreaseCart = (index) => {
-        cart.decreaseCart(index);
-        if (cart.cart[index]) {
-            setAmount((a) => a - cart.cart[index].price)
+        let price = 0;
+        if (mount) {
+            price = cart.cart[index].price;
         }
+        cart.decreaseCart(index);
+        setAmount((a) => a - price)
     }
 
     const deleteCart = (index) => {

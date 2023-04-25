@@ -41,7 +41,7 @@ export default class ProductStore {
 
     decreaseCart(index) {
         this._cart[index].quantity--;
-        if (this._cart[index].quantity === 0) {
+        if (this._cart[index].quantity < 1) {
             this._cart.splice(index, 1)
         }
         this.saveToLocalStorage();
