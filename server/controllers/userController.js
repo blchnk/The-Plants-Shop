@@ -7,7 +7,7 @@ const generateJwt = (id, email, role) => {
     return jwt.sign(
         {id, email, role},
         process.env.SECRET_KEY,
-        {expiresIn: '24h'}
+        {expiresIn: '1h'}
     )
 }
 
@@ -48,7 +48,27 @@ class UserController {
     }
 
     async setUserData(req, res) {
-
+        const {id} = req.params;
+        const updateOps = req.body;
+        try {
+            const user = await User.update(updateOps, {
+                where: {id: id}
+            });
+            if (user[0] === 0) { // если ни один пользователь не был изменен
+                res.status(404).json({
+                    message: 'Пользователь не найден'
+                });
+            } else { // если хотя бы один пользователь был изменен
+                res.status(200).json({
+                    message: 'Данные пользователя обновлены'
+                });
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).json({
+                error: error
+            });
+        }
     }
 }
 

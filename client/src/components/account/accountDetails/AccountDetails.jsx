@@ -1,20 +1,26 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import s from './AccountDetails.module.scss';
-import {loremIpsum} from "lorem-ipsum";
+import {Context} from "../../../index";
+import {observer} from "mobx-react-lite";
 
-const AccountDetails = () => {
+const AccountDetails = observer(() => {
+    const {user} = useContext(Context);
+
     const [name, setName] = useState('');
     const [surname, setSurname] = useState('');
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [phone, setPhone] = useState('');
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState(user.user.email);
+
+    useEffect(() => {
+
+    }, [])
 
     return (
         <>
-            <div style={{display: "flex", flexDirection: 'column', justifyContent: 'space-between'}}>
-                <h4 style={{fontSize: '1rem', fontWeight: '500', padding: '30px 0 0 0'}}>Персональные данные</h4>
-                <div style={{borderBottom: '1px solid #dedee1', margin: '5px 0 25px'}}></div>
+            <div className={s.accountDetails}>
+                <h4 className={s.sectionHeader}>Персональные данные</h4>
                 <section className={s.separatedBlock}>
                     <span className={s.spanDesription}>Здесь вы можете изменить свои персональные данные</span>
                     <form className={s.formBlock} action="">
@@ -67,12 +73,11 @@ const AccountDetails = () => {
                             />
                             <span style={{fontSize: '13px'}}>Введите девятизначное число без пробелов.</span>
                         </label>
-                        <button className={['btn', 'btnAnimation'].join(' ')}>Сохранить</button>
+                        <button className='btn btnAnimation'>Сохранить</button>
                     </form>
                 </section>
 
-                <h4 style={{fontSize: '1rem', fontWeight: '500', padding: '25px 0 0 0'}}>Email</h4>
-                <div style={{borderBottom: '1px solid #dedee1', margin: '5px 0 15px'}}></div>
+                <h4 className={s.sectionHeader}>Email</h4>
                 <section className={s.separatedBlock}>
                     <span className={s.spanDesription}>Введите, чтобы получать рассылку</span>
                     <form className={s.formBlock} action="">
@@ -91,6 +96,6 @@ const AccountDetails = () => {
             </div>
         </>
     );
-};
+});
 
 export default AccountDetails;

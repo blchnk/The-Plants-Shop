@@ -29,29 +29,21 @@ const User = sequalize.define('user', {
         type: DataTypes.STRING,
         unique: false,
         allowNull: true,
-        defaultValue: ""
     },
-    county: {
+    country: {
         type: DataTypes.STRING,
         unique: false,
         allowNull: true,
-        defaultValue: ""
     },
     city: {
         type: DataTypes.STRING,
         unique: false,
-        allowNull: true,
-        defaultValue: ""
+        allowNull: true
     },
-    age: {
-        type: DataTypes.INTEGER,
+    phone: {
+        type: DataTypes.BIGINT,
         unique: false,
-        allowNull: true,
-    },
-    gender: {
-        type: DataTypes.STRING,
-        unique: false,
-        allowNull: true,
+        allowNull: true
     },
     role: {
         type: DataTypes.STRING,
