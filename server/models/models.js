@@ -1,5 +1,5 @@
 const sequalize = require('../db');
-const { DataTypes, DATE} = require('sequelize');
+const {DataTypes} = require('sequelize');
 
 const User = sequalize.define('user', {
     id: {
@@ -18,6 +18,40 @@ const User = sequalize.define('user', {
         unique: true,
         allowNull: false,
         defaultValue: ""
+    },
+    name: {
+        type: DataTypes.STRING,
+        unique: false,
+        allowNull: true,
+        defaultValue: ""
+    },
+    surname: {
+        type: DataTypes.STRING,
+        unique: false,
+        allowNull: true,
+        defaultValue: ""
+    },
+    county: {
+        type: DataTypes.STRING,
+        unique: false,
+        allowNull: true,
+        defaultValue: ""
+    },
+    city: {
+        type: DataTypes.STRING,
+        unique: false,
+        allowNull: true,
+        defaultValue: ""
+    },
+    age: {
+        type: DataTypes.INTEGER,
+        unique: false,
+        allowNull: true,
+    },
+    gender: {
+        type: DataTypes.STRING,
+        unique: false,
+        allowNull: true,
     },
     role: {
         type: DataTypes.STRING,
@@ -42,7 +76,7 @@ const CartProduct = sequalize.define('cart_product', {
     }
 })
 
-const Product  = sequalize.define('product', {
+const Product = sequalize.define('product', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -170,14 +204,14 @@ ProductInfo.belongsTo(Product);
 Type.hasMany(Product);
 Product.belongsTo(Type);
 
-Type.belongsToMany(Color, { through: TypeColor });
-Color.belongsToMany(Type, { through: TypeColor });
+Type.belongsToMany(Color, {through: TypeColor});
+Color.belongsToMany(Type, {through: TypeColor});
 
-Type.belongsToMany(Size, { through: TypeSize });
-Size.belongsToMany(Type, { through: TypeSize });
+Type.belongsToMany(Size, {through: TypeSize});
+Size.belongsToMany(Type, {through: TypeSize});
 
-Type.belongsToMany(Variety, { through: TypeVariety });
-Variety.belongsToMany(Type, { through: TypeVariety });
+Type.belongsToMany(Variety, {through: TypeVariety});
+Variety.belongsToMany(Type, {through: TypeVariety});
 
 module.exports = {
     User,

@@ -1,0 +1,38 @@
+.account{
+  display: flex;
+  height: 650px;
+}
+
+.menu{
+  margin-right: 2rem;
+  flex: 20% 0 0;
+}
+
+.menuItem{
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+  cursor: pointer;
+
+  span{
+    font-weight: 500;
+  }
+}
+
+.selected{
+  background-color: #00AA83;
+  border-radius: 3px;
+
+  span{
+    color: white;
+  }
+}
+
+.accountInfoBlock{
+  padding: 1.5rem;
+  border: 1px solid rgba(168, 168, 168, 0.8);
+  width: 100%;
+  box-shadow: 0px -5px 15px -3px rgba(0,0,0,0.1);
+  border-radius: 3px;
+
+}

@@ -1,0 +1,33 @@
+.separatedBlock {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.spanDesription {
+  flex: 30% 0 0;
+}
+
+.inputsWrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+.formBlock {
+  flex: 70% 0 1;
+
+  input {
+    border-radius: 3px;
+    border: 1px #bbbcc2 solid;
+    background-color: #f4f6f8;
+    padding: 10px;
+  }
+
+  label {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}

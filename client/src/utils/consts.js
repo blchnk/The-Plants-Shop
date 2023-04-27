@@ -8,3 +8,5 @@ export const CARE_ROUTE = '/shop/care';
 export const PRODUCT_ROUTE = '/product';
 export const CART_ROUTE = '/cart';
 export const ACCOUNT_ROUTE = '/account'
+export const ACCOUNT_DETAILS_ROUTE = '/account/details'
+export const ACCOUNT_SETTINGS_ROUTE = '/account/settings'
