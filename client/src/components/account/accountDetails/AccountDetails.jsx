@@ -38,7 +38,11 @@ const AccountDetails = observer(() => {
             if (data.surname) setSurname(data.surname);
             if (data.country) setCountry(data.country);
             if (data.city) setCity(data.city);
-            if (data.phone) setPhone(data.phone);
+            if (data.phone === 0) {
+                setPhone('');
+            } else {
+                setPhone(data.phone)
+            }
             if (data.email) setEmail(data.email);
         });
     }, [])
@@ -112,6 +116,7 @@ const AccountDetails = observer(() => {
                                    type="text"
                                    value={phone}
                                    onChange={e => setPhone(e.target.value)}
+                                   maxLength={9}
                             />
                             <span style={{fontSize: '13px'}}>Введите девятизначное число без пробелов.</span>
                         </label>

@@ -14,6 +14,7 @@ const AccountSettings = () => {
     const [newRepeatPassword, setNewRepeatPassword] = useState('');
 
     // const [isValid, setIsValid] = useState(true);
+    const [showPassword, setShowPassword] = useState(false);
 
     const notifySuccess = (message) => toast.success(message, {
         hideProgressBar: true,
@@ -91,9 +92,13 @@ const AccountSettings = () => {
                                 ВВЕДИТЕ СТАРЫЙ ПАРОЛЬ
                                 <input name='oldPassword'
                                        id='oldInputPassword'
-                                       type="text"
+                                       type={showPassword ? "text" : "password"}
                                        value={oldPassword}
-                                       onChange={e => setOldPassword(e.target.value)}
+                                       onChange={e => {
+                                           setOldPassword(e.target.value);
+                                           // console.log(oldPassword)
+                                       }}
+                                       maxLength={24}
                                 />
                             </label>
 
@@ -101,9 +106,10 @@ const AccountSettings = () => {
                                 ВВЕДИТЕ НОВЫЙ ПАРОЛЬ
                                 <input name='newPassword'
                                        id='newInputPassword'
-                                       type="text"
+                                       type="password"
                                        value={newPassword}
                                        onChange={e => setNewPassword(e.target.value)}
+                                       maxLength={24}
                                        // className={!isValid && s.errorInputBorder}
                                 />
                                 {/*{!isValid &&*/}
@@ -117,9 +123,10 @@ const AccountSettings = () => {
                             ПОВТОРИТЕ НОВЫЙ ПАРОЛЬ
                             <input name='newPassword'
                                    id='newInputRepeatPassword'
-                                   type="text"
+                                   type="password"
                                    value={newRepeatPassword}
                                    onChange={e => setNewRepeatPassword(e.target.value)}
+                                   maxLength={24}
                             />
                         </label>
                         <button className='btn btnAnimation'
