@@ -13,7 +13,6 @@ const EditProduct = observer(({setLoading, setActive, productId}) => {
 
     const [name, setName] = useState(currentProduct.name);
     const [price, setPrice] = useState(currentProduct.price);
-    // const [type, setType] = useState({});
     const [file, setFile] = useState(currentProduct.img);
     const [info, setInfo] = useState([]);
 

@@ -71,6 +71,13 @@ img{
   display: block;
 }
 
+input{
+
+  &:focus {
+    outline: 2.5px solid #00AA83;
+  }
+}
+
 input[type="text"] {
   font-family: inherit;
   font-size: inherit;

@@ -11,19 +11,16 @@ const User = sequalize.define('user', {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
-        defaultValue: ""
     },
     password: {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
-        defaultValue: ""
     },
     name: {
         type: DataTypes.STRING,
         unique: false,
-        allowNull: true,
-        defaultValue: ""
+        allowNull: true
     },
     surname: {
         type: DataTypes.STRING,

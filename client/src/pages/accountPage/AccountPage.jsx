@@ -28,8 +28,8 @@ const AccountPage = observer(() => {
 
     useEffect(() => {
         setSelectedMenuItem('Профиль');
-        console.log(user.user)
     }, [])
+
 
     const handleClick = (item) => {
         setActiveComponent(item.component);
@@ -63,7 +63,7 @@ const AccountPage = observer(() => {
                     </div>
                 </div>
                 <button className='btn btnAnimation'
-                        style={{border: 'solid black 1px', float: 'right'}}
+                        style={{float: 'right'}}
                         onClick={() => logOut()}>
                     Выйти
                 </button>

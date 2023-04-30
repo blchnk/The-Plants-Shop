@@ -19,6 +19,12 @@ export const check = async () => {
     return jwt_decode(data.token);
 }
 
-// export const getUserData = async () => {
-//     const {data} = await $authHost.get('api/user/auth')
-// }
+export const patchUserData = async (id, userData) => {
+    const {data} = await $authHost.patch('api/user/' + id, userData);
+    return data;
+}
+
+export const getUserData = async (id) => {
+    const {data} = await $authHost.get('api/user/' + id);
+    return data;
+}

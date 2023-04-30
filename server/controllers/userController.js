@@ -2,6 +2,7 @@ const ApiError = require('../error/ApiError');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const {User, Basket, Cart} = require('../models/models')
+const {where} = require("sequelize");
 
 const generateJwt = (id, email, role) => {
     return jwt.sign(
@@ -47,9 +48,17 @@ class UserController {
         return res.json({token})
     }
 
-    async setUserData(req, res) {
+    async patchUserData(req, res) {
         const {id} = req.params;
         const updateOps = req.body;
+
+        // Шифрование пароля перед сохранением в базу данных
+        if (updateOps.password) {
+            const saltRounds = 10;
+            const hashedPassword = await bcrypt.hash(updateOps.password, saltRounds);
+            updateOps.password = hashedPassword;
+        }
+
         try {
             const user = await User.update(updateOps, {
                 where: {id: id}
@@ -68,6 +77,21 @@ class UserController {
             res.status(500).json({
                 error: error
             });
+        }
+    }
+
+    async getUserData(req, res) {
+        const {id} = req.params;
+        try {
+            const user = await User.findOne({where: {id}});
+            if (user) {
+                res.status(200).json(user); // Если пользователь найден, возвращаем его данные
+            } else {
+                res.status(404).json({message: 'Пользователь не найден'}); // Если пользователь не найден, возвращаем ошибку
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({message: 'Ошибка сервера'}); // Если произошла ошибка на сервере, возвращаем ошибку
         }
     }
 }

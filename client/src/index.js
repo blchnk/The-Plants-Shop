@@ -5,6 +5,7 @@ import ProductStore from "./store/ProductStore";
 import CartStore from "./store/CartStore";
 import App from './App';
 import './styles/index.scss'
+import 'react-toastify/dist/ReactToastify.css';
 import ProductInfoStore from "./store/ProductInfoStore";
 
 export const Context = createContext(null);
