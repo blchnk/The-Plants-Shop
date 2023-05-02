@@ -64,7 +64,7 @@ const ProductPage = observer(() => {
                         }
                     </div>
 
-                    <button style={{width: '40%', padding: '1rem'}}
+                    <button style={{width: '40%', padding: '1rem', maxWidth: '250px', marginTop: '1.7rem'}}
                             className='btn btnAnimation'
                             onClick={addToCart}>
                         Добавить в корзину

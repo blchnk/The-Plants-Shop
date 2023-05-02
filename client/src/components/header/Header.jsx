@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import style from './Header.module.scss'
 import {Link} from "react-router-dom";
 import {
-    ACCOUNT_ROUTE, CARE_ROUTE,
+    ACCOUNT_ROUTE, AI_HELPER_ROUTE, CARE_ROUTE,
     CART_ROUTE,
     HOME_ROUTE,
     POTS_ROUTE,
@@ -42,13 +42,13 @@ const Header = () => {
                             <Link className={style.linkToPage} to={POTS_ROUTE}>Горшки</Link>
                         </li>
                         <li className={style.item}>
-                            <a href="/">Блог</a>
-                        </li>
-                        <li className={style.item}>
-                            <a href="/">О Нас</a>
+                            <a href="/">О нас</a>
                         </li>
                         <li className={style.item}>
                             <a href="/">Доставка и Оплата</a>
+                        </li>
+                        <li className={style.item}>
+                            <Link to={AI_HELPER_ROUTE}>Задать вопрос</Link>
                         </li>
                     </ul>
                     <ul className={[style.iconsList, style.icons].join(' ')}>

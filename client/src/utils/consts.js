@@ -10,3 +10,4 @@ export const CART_ROUTE = '/cart';
 export const ACCOUNT_ROUTE = '/account'
 export const ACCOUNT_DETAILS_ROUTE = '/account/details'
 export const ACCOUNT_SETTINGS_ROUTE = '/account/settings'
+export const AI_HELPER_ROUTE = '/ai-helper'

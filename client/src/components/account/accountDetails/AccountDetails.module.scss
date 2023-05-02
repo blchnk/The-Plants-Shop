@@ -46,3 +46,14 @@
     font-weight: 600;
   }
 }
+
+@media (max-width: 1024px) {
+  .inputsWrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .separatedBlock{
+    flex-direction: column;
+  }
+}

@@ -52,3 +52,14 @@
 .errorInputBorder {
   outline: red solid 2.5px !important;
 }
+
+@media (max-width: 1024px) {
+  .inputsWrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .separatedBlock{
+    flex-direction: column;
+  }
+}
