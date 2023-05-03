@@ -4,8 +4,8 @@ const ChatMessage = ({ author, content }) => {
     return (
         <div>
             <p>
-                <strong>
-                    {author === 'user' ? 'Вы:' : 'ChatGPT:'}
+                <strong style={{fontWeight: 500}}>
+                    {author === 'user' ? 'Вы: ' : 'ChatGPT: '}
                 </strong>
                 {content}
             </p>

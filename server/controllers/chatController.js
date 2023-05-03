@@ -3,15 +3,13 @@ const {Configuration, OpenAIApi} = require("openai");
 const askToChatGpt = async (req, res) => {
     const openAIInstance = await _createOpenAIInstance();
 
-    await openAIInstance.createCompletion({
-        model: "text-davinci-003",
-        prompt: req.body.message,
-        max_tokens: 1000,
-        temperature: 0
+    await openAIInstance.createChatCompletion({
+        model: "gpt-3.5-turbo",
+        messages: [{role: "user", content: req.body.message}],
     })
         .then(response => {
-            const repliedMessage = response.data.choices[0].text;
-            res.send({from: 'ChatGPT', data: repliedMessage});
+            const repliedMessage = response.data.choices[0].message;
+            res.send({role: 'ChatGPT', data: repliedMessage});
         }).catch(err => console.log(err))
 }
 

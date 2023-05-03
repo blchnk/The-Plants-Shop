@@ -11,7 +11,7 @@ const ChatInput = ({messages, setMessages}) => {
         sendQueryToChatGPT(message)
             .then(data => {
                 console.log(data)
-                setMessages((m) => [...m, {author: 'ChatGPT', content: data.data}])
+                setMessages((m) => [...m, {author: 'ChatGPT', content: data.data.content}])
             });
         setMessage('');
     };
