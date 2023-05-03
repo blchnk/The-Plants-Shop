@@ -2,7 +2,7 @@ import {
     ACCOUNT_DETAILS_ROUTE,
     ACCOUNT_ROUTE, ACCOUNT_SETTINGS_ROUTE,
     ADMIN_ROUTE, AI_HELPER_ROUTE, CARE_ROUTE,
-    CART_ROUTE,
+    CART_ROUTE, CHAT_ROUTE,
     HOME_ROUTE,
     LOGIN_ROUTE, POTS_ROUTE,
     PRODUCT_ROUTE,
@@ -19,7 +19,7 @@ import AuthPage from "./pages/authPage/AuthPage";
 import AccountPage from "./pages/accountPage/AccountPage";
 import AccountDetails from "./components/account/accountDetails/AccountDetails";
 import AccountSettings from "./components/account/accountSettings/AccountSettings";
-import AiHelperPage from "./pages/aiHelperPage/AiHelperPage";
+import Chat from "./pages/ChatPage/Chat";
 
 export const authRoutes = [
     {
@@ -66,7 +66,7 @@ export const publicRoutes = [
         component: <CartPage/>
     },
     {
-        path: AI_HELPER_ROUTE,
-        component: <AiHelperPage/>
+        path: CHAT_ROUTE,
+        component: <Chat/>
     }
 ]
