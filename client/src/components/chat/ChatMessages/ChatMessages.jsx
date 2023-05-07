@@ -1,14 +1,16 @@
 import React from 'react';
 import ChatMessage from "../ChatMessage/ChatMessage";
 
-const ChatMessages = ({messages}) => {
+const ChatMessages = ({messages, messageIsLoad}) => {
+
     return (
         <>
             {messages.map((message, index) => (
                 <ChatMessage
                     key={index}
-                    author={message.author}
+                    role={message.role}
                     content={message.content}
+                    messageIsLoad={messageIsLoad}
                 />
             ))}
         </>

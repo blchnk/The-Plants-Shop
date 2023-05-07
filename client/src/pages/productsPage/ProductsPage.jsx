@@ -20,6 +20,7 @@ const ProductsPage = observer(({typeId}) => {
 
         fetchProducts(typeId).then(data => {
             product.setProducts(data);
+            console.log(data)
         });
     }, [location.pathname]);
 

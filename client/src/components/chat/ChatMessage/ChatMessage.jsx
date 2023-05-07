@@ -1,15 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import s from '../ChatMessage/ChatMessage.module.scss'
+import Loader from "../../loader/Loader";
 
-const ChatMessage = ({ author, content }) => {
+const ChatMessage = ({ role, content }) => {
     return (
-        <div>
-            <p>
-                <strong style={{fontWeight: 500}}>
-                    {author === 'user' ? 'Вы: ' : 'ChatGPT: '}
-                </strong>
-                {content}
+        <>
+            <p className={role === 'user' ? s.userMessage : s.assistantMessage}>
+               <>
+                   <strong style={{fontWeight: 500}}>
+                       {role === 'user' ? 'Вы: ' : 'Садовод: '}
+                   </strong>
+                   {content}
+               </>
             </p>
-        </div>
+        </>
     );
 };
 

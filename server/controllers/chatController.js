@@ -9,7 +9,7 @@ const askToChatGpt = async (req, res) => {
     })
         .then(response => {
             const repliedMessage = response.data.choices[0].message;
-            res.send({role: 'ChatGPT', data: repliedMessage});
+            res.send({role: 'assistant', content: repliedMessage.content});
         }).catch(err => console.log(err))
 }
 

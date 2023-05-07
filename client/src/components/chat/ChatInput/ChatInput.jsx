@@ -7,12 +7,12 @@ const ChatInput = ({messages, setMessages}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!message.trim()) return; // if input string in empty
-        setMessages([...messages, {author: 'user', content: message}])
+        setMessages([...messages, {role: 'user', content: message}])
+
         sendQueryToChatGPT(message)
             .then(data => {
-                console.log(data)
-                setMessages((m) => [...m, {author: 'ChatGPT', content: data.data.content}])
-            });
+                setMessages((m) => [...m, {role: 'assistant', content: data.content}])
+            })
         setMessage('');
     };
 
@@ -23,8 +23,13 @@ const ChatInput = ({messages, setMessages}) => {
                 value={message}
                 onChange={e => setMessage(e.target.value)}
                 placeholder="Введите ваше сообщение"
+                style={{padding: '0.5rem 0.5rem', border: '1px solid lightgray'}}
             />
-            <button type="submit">Отправить</button>
+            <button type="submit"
+                    className='btn btnAnimation'
+            >
+                Отправить
+            </button>
         </form>
     );
 };

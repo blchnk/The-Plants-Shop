@@ -8,9 +8,11 @@ const Chat = () => {
 
     return (
         <div className='container'>
-            <h2 style={{fontSize: '40px'}}>Задай вопрос</h2>
+            <h2 style={{fontSize: '40px'}}>Задайте вопрос</h2>
+            <div id='messages' style={{margin: '1rem 0', height: '60vh', overflowY: 'scroll'}}>
+                <ChatMessages messages={messages} setMessages={setMessages}/>
+            </div>
             <ChatInput messages={messages} setMessages={setMessages}/>
-            <ChatMessages messages={messages} setMessages={setMessages}/>
         </div>
     );
 };

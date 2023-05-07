@@ -1,0 +1,12 @@
+.dots {
+  width: 40px;
+  height: 9.6px;
+  background: radial-gradient(circle closest-side,#05aa83 90%,#0000) 0 0/33% 100% no-repeat;
+  animation: dots-9e862z 1.2s steps(3) infinite;
+}
+
+@keyframes dots-9e862z {
+  to {
+    background-position: 150% 0;
+  }
+}
