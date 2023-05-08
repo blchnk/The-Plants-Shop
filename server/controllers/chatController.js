@@ -5,7 +5,7 @@ const askToChatGpt = async (req, res) => {
 
     await openAIInstance.createChatCompletion({
         model: "gpt-3.5-turbo",
-        messages: [{role: "user", content: req.body.message}],
+        messages: req.body,
     })
         .then(response => {
             const repliedMessage = response.data.choices[0].message;
