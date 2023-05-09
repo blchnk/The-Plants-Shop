@@ -1,21 +1,19 @@
 import React, {useCallback, useState} from 'react';
 import {sendQueryToChatGPT} from '../../../api/chatAPI';
 
-const ChatInput = ({messages, setMessages}) => {
+const ChatInput = ({setMessages}) => {
     const [message, setMessage] = useState('');
 
     const handleMessage = useCallback((message) => {
-        setMessages((prevMessages) => {
-            const newMessages = [...prevMessages, message];
-            const lastMessage = newMessages[newMessages.length - 1];
+        setMessages((m) => {
+            const newMessages = [...m, message];
 
-            if (lastMessage.role === 'user') {
-                sendQueryToChatGPT(newMessages)
-                    .then(data => {
-                        const assistantResponse = { role: 'assistant', content: data.content };
-                        setMessages([...newMessages, assistantResponse]);
-                    });
-            }
+            sendQueryToChatGPT(newMessages)
+                .then(data => {
+                    const assistantResponse = {role: 'assistant', content: data.content};
+                    setMessages([...newMessages, assistantResponse]);
+                });
+
             return newMessages;
         });
     }, []);

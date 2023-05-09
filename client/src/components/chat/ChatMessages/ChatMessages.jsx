@@ -1,18 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ChatMessage from "../ChatMessage/ChatMessage";
+import s from "../ChatMessages/ChatMessages.module.scss";
+import Loader from "../../loader/Loader";
 
-const ChatMessages = ({messages, messageIsLoad}) => {
+const ChatMessages = ({messages}) => {
 
     return (
         <>
-            {messages.map((message, index) => (
-                <ChatMessage
-                    key={index}
-                    role={message.role}
-                    content={message.content}
-                    messageIsLoad={messageIsLoad}
-                />
-            ))}
+            <div className={s.messages}>
+                {
+                    messages.map((message, index) => (
+                        <div key={index}>
+                            <ChatMessage
+                                role={message.role}
+                                content={message.content}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
         </>
     );
 };
