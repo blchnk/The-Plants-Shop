@@ -1,10 +1,16 @@
-.contentWrapper{
+.contentWrapper {
   display: grid;
   grid-template-columns: 1fr 5fr;
 }
 
-.productCardsWrapper{
+.productCardsWrapper {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1vw;
+}
+
+@media (min-width: 1200px) {
+  .productCardsWrapper {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 0.333fr));
+  }
 }
