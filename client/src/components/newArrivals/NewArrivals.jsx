@@ -1,47 +1,34 @@
-import React, { useState } from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import NewArrivalsItem from "./NewArrivalsItem";
 import style from './NewArrivals.module.scss'
+import {getNewArrivals} from "../../api/productAPI";
 
 const NewArrivals = () => {
-    const [cards, setCards] = useState([
-        {
-            id: 1,
-            name: 'plant1',
-            price: 1000,
-            image: 'plant1.png',
-        },
-        {
-            id: 2,
-            name: 'plant2',
-            price: 500,
-            image: 'plant1.png',
-        },
-        {
-            id: 3,
-            name: 'plant3',
-            price: 5000,
-            image: 'plant1.png',
-        },
-        {
-            id: 4,
-            name: 'plant4',
-            price: 3000,
-            image: 'plant1.png',
-        },
-    ]);
+    const [load, setLoad] = useState(true);
+    const [newArrivals, setNewArrivals] = useState([]);
+
+    useMemo(() => {
+        getNewArrivals().then(data => {
+            setNewArrivals(data)
+            console.log(newArrivals)
+            setLoad(false)
+        })
+    }, [newArrivals])
 
     return (
-        <section className='mainPageSection'>
-            <div className={style.newArrivals}>
-                <h2>НОВЫЕ ПОСТУПЛЕНИЯ</h2>
-                <div className={style.cardsWrapper}>
-                    {cards.map(item =>
-                        <NewArrivalsItem item={item} key={item.id} />
-                    )}
+        load ?
+            <h1>LOADING...</h1> :
+            <section className='mainPageSection'>
+                <div className={style.newArrivals}>
+                    <h2>НОВЫЕ ПОСТУПЛЕНИЯ</h2>
+                    <div className={style.cardsWrapper}>
+                        {newArrivals.map(item =>
+                            <NewArrivalsItem item={item} key={item.id}/>
+                        )}
+                    </div>
+                    <button className={['btn', 'btnAnimation'].join(' ')}>Купить Сейчас</button>
                 </div>
-                <button className={['btn', 'btnAnimation'].join(' ')}>Купить Сейчас</button>
-            </div>
-        </section>
+            </section>
     );
 };
 

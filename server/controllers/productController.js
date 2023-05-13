@@ -72,7 +72,7 @@ class ProductController {
         const updateOps = req.body; // получаем данные для обновления из тела запроса
         try {
             const product = await Product.update(updateOps, {
-                where: { id: id }
+                where: {id: id}
             });
             if (product[0] === 0) { // если ни один продукт не был изменен
                 res.status(404).json({

@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom/client';
 import UserStore from './store/UserStore';
 import ProductStore from "./store/ProductStore";
 import CartStore from "./store/CartStore";
+import ProductInfoStore from "./store/ProductInfoStore";
+import NewArrivalsStore from "./store/NewArrivalsStore";
 import App from './App';
 import './styles/index.scss'
 import 'react-toastify/dist/ReactToastify.css';
-import ProductInfoStore from "./store/ProductInfoStore";
 
 export const Context = createContext(null);
 
@@ -17,7 +18,8 @@ root.render(
             user: new UserStore(),
             product: new ProductStore(),
             productInfo: new ProductInfoStore(),
-            cart: new CartStore()
+            cart: new CartStore(),
+            newArrivals: new NewArrivalsStore()
         }
     }>
         <App/>

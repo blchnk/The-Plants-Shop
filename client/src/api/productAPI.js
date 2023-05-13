@@ -40,5 +40,10 @@ export const patchProduct = async (id, updatedData) => {
     return data;
 }
 
+export const getNewArrivals = async () => {
+    const {data} = await $host.get('api/newArrivals');
+    return data;
+}
+
 
 

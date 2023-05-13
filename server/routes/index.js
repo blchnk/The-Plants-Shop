@@ -6,6 +6,7 @@ const typeRouter = require('./typeRouter');
 const colorRouter = require('./colorRouter');
 const productInfoRouter = require('./productInfoRouter');
 const chatRouter = require('./chatRouter');
+const newArrivalsRouter = require('./newArrivalsRouter');
 
 Router.use('/user', userRouter);
 Router.use('/product', productRouter);
@@ -13,5 +14,6 @@ Router.use('/product-info', productInfoRouter);
 Router.use('/type', typeRouter);
 Router.use('/color', colorRouter);
 Router.use('/chat', chatRouter);
+Router.use('/newArrivals', newArrivalsRouter);
 
 module.exports = Router;
