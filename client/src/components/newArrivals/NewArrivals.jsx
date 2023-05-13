@@ -10,10 +10,9 @@ const NewArrivals = () => {
     useMemo(() => {
         getNewArrivals().then(data => {
             setNewArrivals(data)
-            console.log(newArrivals)
             setLoad(false)
         })
-    }, [newArrivals])
+    }, [load])
 
     return (
         load ?

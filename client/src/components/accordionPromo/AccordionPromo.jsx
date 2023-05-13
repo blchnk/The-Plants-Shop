@@ -3,16 +3,16 @@ import style from './AccordionPromo.module.scss'
 import Accordion from "../accordion/Accordion";
 import {loremIpsum} from "lorem-ipsum";
 
-const AccordionPromo = ({props, src, promoName, imgPosition}) => {
+const AccordionPromo = ({props, src, promoName, imgPosition, title}) => {
     return (
         <div className={style.accordionPromo}>
             <h2>{promoName}</h2>
             {imgPosition === 'left'
                 ?
                 <div className={style.categoriesBody}>
-                    <img src={src} alt=""/>
+                    <img src={src} style={{cursor: 'pointer'}} alt=""/>
                     <div className={style.infoBlock}>
-                        <p className={style.description}>{loremIpsum()}</p>
+                        <p className={style.description}>{title}</p>
                         {
                             props.map(({title, content}, number) =>
                                 <Accordion title={title} content={content} key={number}/>)
@@ -28,7 +28,7 @@ const AccordionPromo = ({props, src, promoName, imgPosition}) => {
                                 <Accordion title={title} content={content} key={number}/>)
                         }
                     </div>
-                    <img src={src} alt=""/>
+                    <img src={src} style={{cursor: 'pointer'}} alt=""/>
                 </div>
             }
         </div>

@@ -40,3 +40,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+.cartWrapper {
+  display: grid;
+  grid-template-columns: 2fr 1.2fr;
+}
+
+.emptyCartImg {
+  //max-height: 500px;
+  //width: auto;
+}

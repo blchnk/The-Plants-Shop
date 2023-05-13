@@ -1,7 +1,6 @@
 import {useMemo} from "react";
 
 export function useSortedProducts(products, sortParams) {
-    console.log('memo')
     return useMemo(() => {
         if (sortParams) {
             if (sortParams.type === 'ascending') {

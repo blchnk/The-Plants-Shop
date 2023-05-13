@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import style from './Header.module.scss'
 import {Link} from "react-router-dom";
 import {
+    ABOUT_US_ROUTE,
     ACCOUNT_ROUTE, CARE_ROUTE,
     CART_ROUTE, CHAT_ROUTE,
     HOME_ROUTE,
@@ -42,7 +43,7 @@ const Header = () => {
                             <Link className={style.linkToPage} to={POTS_ROUTE}>Горшки</Link>
                         </li>
                         <li className={style.item}>
-                            <a href="/">О нас</a>
+                            <Link className={style.linkToPage} to={ABOUT_US_ROUTE}>О Нас</Link>
                         </li>
                         <li className={style.item}>
                             <a href="/">Доставка и Оплата</a>

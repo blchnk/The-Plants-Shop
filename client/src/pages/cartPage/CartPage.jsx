@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import s from './CartPage.module.scss';
 import CartItem from "../../components/cartItem/CartItem";
+import emptyCartImg from '../../resources/img/emptyCart.jpg';
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 
@@ -53,7 +54,6 @@ const CartPage = observer(() => {
                         <h2>Ваша корзина</h2>
                         {
                             cart.cart.map((item, index) =>
-
                                 <CartItem item={item}
                                           increaseCart={increaseCart}
                                           decreaseCart={decreaseCart}
@@ -77,7 +77,13 @@ const CartPage = observer(() => {
                     </div>
                     :
                     <div className='container'>
-                        <h2>Корзина пуста</h2>
+                        <div className={s.cartWrapper}>
+                            <div className={s.textLeft}>
+                                <h2>ВАША КОРЗИНА ПУСТА</h2>
+                                <p>Похоже, что вы еще не добавили ни одного товара. Самое время выбрать что-нибудь.</p>
+                            </div>
+                            <img className={s.emptyCartImg} src={emptyCartImg} alt=""/>
+                        </div>
                     </div>
             }
         </>

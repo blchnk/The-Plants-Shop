@@ -7,7 +7,7 @@ const Intro = () => {
         <div className={style.intro}>
             <div>
                 <h1 className={style.mainText}>THE<br/>PLANTS</h1>
-                <p>Lorem ipsum lorem ipsum lorem</p>
+                <p>Мы поможем озеленить ваш дом и добавить немного уюта</p>
                 <button className={['btn', 'btnAnimation'].join(' ')}>Купить</button>
             </div>
             <div>

@@ -1,0 +1,23 @@
+.pageNotFound {
+  display: flex;
+}
+
+.textContent {
+  flex-basis: 65%;
+
+  h1 {
+    line-height: 7rem;
+    font-size: 110px;
+  }
+}
+
+.errorNumber {
+  flex-basis: 25%;
+
+  p {
+    font-size: 180px;
+    text-align: center;
+    margin-top: 3rem;
+    color: #07ee47;
+  }
+}

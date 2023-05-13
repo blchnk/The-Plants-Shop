@@ -1,0 +1,41 @@
+.contentSection {
+  display: flex;
+  gap: 2rem;
+  margin: 0 0 4rem 0;
+}
+
+.textContent {
+  flex-basis: 70%;
+
+  input {
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 0 0 0.4rem 0;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.colDir {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.imageContent {
+  flex-basis: 50%;
+}
+
+.imageContentLs {
+  flex-basis: 70%;
+}
+
+.inputIcon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
