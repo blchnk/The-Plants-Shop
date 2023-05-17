@@ -8,12 +8,14 @@ import {observer} from "mobx-react-lite";
 import {fetchProducts, fetchTypes} from "../../api/productAPI";
 import {useLocation} from "react-router-dom";
 import {useSortedProducts} from "../../hooks/useSortedProducts";
+import HideSortBar from "../../components/ui/hideSortBar/HideSortBar";
 
 const ProductsPage = observer(({typeId}) => {
     const {product} = useContext(Context);
     const location = useLocation();
     const [pageTypeTitle, setPageTypeTitle] = useState('');
     const [sortParams, setSortParams] = useState({});
+    const [sortBarVisible, setSortBarVisible] = useState(true);
 
     useEffect(() => {
         fetchTypes().then(data => {
@@ -23,7 +25,6 @@ const ProductsPage = observer(({typeId}) => {
 
         fetchProducts(typeId).then(data => {
             product.setProducts(data);
-            // console.log(data)
         });
     }, [location.pathname]);
 
@@ -33,16 +34,19 @@ const ProductsPage = observer(({typeId}) => {
         <div className='container'>
             <div style={{display: "flex", alignItems: 'baseline', justifyContent: 'space-between'}}>
                 <p style={{fontSize: '50px'}}>{pageTypeTitle}</p>
-                <SortDropdown
-                    setSortParams={setSortParams}
-                    sortOptions={[
-                        {value: 'price', name: '₽ Возрастанию', type: 'ascending'},
-                        {value: 'price', name: '₽ Убыванию', type: 'descending'}
-                    ]}
-                />
+                <div style={{display: 'flex', gap: '3rem'}}>
+                    <HideSortBar hide={sortBarVisible} setHide={setSortBarVisible}/>
+                    <SortDropdown
+                        setSortParams={setSortParams}
+                        sortOptions={[
+                            {value: 'price', name: '₽ Возрастанию', type: 'ascending'},
+                            {value: 'price', name: '₽ Убыванию', type: 'descending'}
+                        ]}
+                    />
+                </div>
             </div>
-            <div className={style.contentWrapper}>
-                <SortBar/>
+            <div className={sortBarVisible ? style.contentWrapper : style.contentWrapperFull}>
+                {sortBarVisible && <SortBar/>}
                 <div className={style.productCardsWrapper}>
                     {sortedProducts.map(item =>
                         <ProductCard item={item} key={item.id}/>

@@ -1,5 +1,4 @@
-.sortSpan {
-  position: relative;
+.hide {
   cursor: pointer;
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
@@ -8,20 +7,4 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
-}
-
-.dropdown {
-  padding: 0.5rem 0.5rem;
-  margin: 0.3rem 0;
-  position: absolute;
-  cursor: pointer;
-  background-color: white;
-  box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.2);
-  border-radius: 4px;
-}
-
-.sortList {
-  li {
-    font-size: 15px;
-  }
 }
