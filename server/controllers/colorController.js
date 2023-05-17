@@ -12,7 +12,7 @@ class ColorController {
                 Color.findOne({where: {name: color.name}})
                     .then(color => {
                         if (!color) return;
-                        type.addColor(color.id, {through: {id: type.id}});
+                        type.addColor(color.id, {through: {typeId: type.id}});
                     })
             });
 
