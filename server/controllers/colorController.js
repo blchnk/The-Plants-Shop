@@ -1,10 +1,22 @@
-const {Color} = require('../models/models');
+const {Color, Type} = require('../models/models');
 
 class ColorController {
     async create(req, res) {
-        const {name} = req.body;
-        const type = await Color.create({name});
-        return res.json(type);
+        const {name, typeName} = req.body;
+        const color = await Color.create({name});
+
+        Type.findOne({where: {name: typeName}})
+            .then(type => {
+                if (!type) return;
+
+                Color.findOne({where: {name: typeName}})
+                    .then(color => {
+                        if (!color) return;
+                        type.addColor(color, {through: {id: type.id}});
+                    })
+            });
+
+        return res.json(color);
     }
 
     async getAll(req, res) {
