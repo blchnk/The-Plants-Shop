@@ -9,10 +9,10 @@ class ColorController {
             .then(type => {
                 if (!type) return;
 
-                Color.findOne({where: {name: typeName}})
+                Color.findOne({where: {name: color.name}})
                     .then(color => {
                         if (!color) return;
-                        type.addColor(color, {through: {id: type.id}});
+                        type.addColor(color.id, {through: {id: type.id}});
                     })
             });
 
