@@ -8,9 +8,8 @@ class ProductController {
         try {
             let { name, price, typeId, info, colorId, sizeId, varietyId } = req.body;
             const { img } = req.files;
-            console.log(img);
             let fileName = v4() + ".jpg";
-            await img.mv(resolve(__dirname, "..", "static", fileName));
+            await img.mv(resolve(__dirname, "../..", "static", fileName));
 
             const productData = {
                 name,
