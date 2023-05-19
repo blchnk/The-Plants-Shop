@@ -53,14 +53,17 @@ const ProductPage = observer(() => {
                         {
                             productInfo.map((item, number) =>
                                 <ProductProperty propertyTitle={item.title} propertyName={item.description}
-                                                 key={number}/>)
+                                                 key={number}
+                                />
+                            )
                         }
                     </div>
 
                     <div className={style.accordion}>
                         {
                             accordionData.map(({title, content}, number) =>
-                                <Accordion title={title} content={content} key={number}/>)
+                                <Accordion title={title} content={content} key={number}/>
+                            )
                         }
                     </div>
 

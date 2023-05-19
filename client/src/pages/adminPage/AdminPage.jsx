@@ -65,8 +65,12 @@ const AdminPage = observer(() => {
                                 <th>Стоимость</th>
                                 <th>Изображение</th>
                                 <th>Тип</th>
-                                <th>createdAt</th>
-                                <th>updatedAt</th>
+                                <th>Цвет</th>
+                                <th>Размер</th>
+                                <th>Материал</th>
+                                <th>Освещение</th>
+                                <th>Особенность</th>
+                                <th>Разновидность</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -75,11 +79,20 @@ const AdminPage = observer(() => {
                                     <th>{item.id}</th>
                                     <th>{item.name}</th>
                                     <th>{item.price}</th>
-                                    <th>{item.img}</th>
+                                    <th>
+                                        <img style={{width: '70px', height: 'auto'}}
+                                             src={process.env.REACT_APP_API_URL + item.img}
+                                        />
+                                    </th>
+                                    {/*<th>{item.img}</th>*/}
                                     <th>{product.types[item.typeId - 1].name}</th>
-                                    <th>{item.createdAt}</th>
-                                    <th>{item.updatedAt}</th>
-                                    <input className={style.editBtn}
+                                    {item.colorId ? <th>{product.colors[item.colorId].name}</th> : <th>Нет</th>}
+                                    {item.sizeId ? <th>{product.sizes[item.sizeId].name}</th> : <th>Нет</th>}
+                                    {item.materialId ? <th>{product.material[item.materialId].name}</th> : <th>Нет</th>}
+                                    {item.lightId ? <th>{product.light[item.lightId].name}</th> : <th>Нет</th>}
+                                    {item.benefitId ? <th>{product.benefit[item.benefitId].name}</th> : <th>Нет</th>}
+                                    {item.varietyId ? <th>{product.variety[item.varietyId].name}</th> : <th>Нет</th>}
+                                    <input style={{marginTop: '2.6rem'}} className={style.editBtn}
                                            onClick={() => editHandler(item.id)}
                                            type="image"
                                            src={editIcon}

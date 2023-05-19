@@ -30,17 +30,20 @@ const CreateProduct = observer(({setLoading, setActive}) => {
 
     const addProduct = () => {
         const formData = new FormData()
+
         formData.append('name', name)
         formData.append('price', `${price}`)
         formData.append('img', file)
         formData.append('typeId', product.selectedType.id)
         formData.append('info', JSON.stringify(info))
+
         formData.append('colorId', product.selectedColor.id)
         formData.append('sizeId', product.selectedSize.id)
         formData.append('materialId', product.selectedMaterial.id)
         formData.append('lightId', product.selectedLight.id)
         formData.append('varietyId', product.selectedVariety.id)
         formData.append('benefitId', product.selectedBenefit.id)
+
         createProduct(formData).then(data => setActive(false))
     }
 
@@ -61,7 +64,8 @@ const CreateProduct = observer(({setLoading, setActive}) => {
                            onChange={(e) => setPrice(Number(e.target.value))}
                     />
                     <Dropdown options={product.types} product={product} placeholder='Введите тип товара'
-                              keyName='type'/>
+                              keyName='type'
+                    />
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                         <div style={{display: 'flex', gap: '0.5rem'}}>
                             <div className={style.propertyDropdown}>

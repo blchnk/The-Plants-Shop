@@ -21,6 +21,7 @@ const EditProduct = observer(({setLoading, setActive, productId}) => {
     }, [isLoading])
 
     useEffect(() => {
+        console.log(product.selectedType.id)
         let type = product.types.find(item => item.id === currentProduct.typeId);
         product.setSelectedType({id: type.id, name: type.name});
     })
@@ -67,7 +68,8 @@ const EditProduct = observer(({setLoading, setActive, productId}) => {
                            value={price}
                            onChange={(e) => setPrice(Number(e.target.value))}
                     />
-                    <Dropdown options={product.types} product={product} placeholder='Введите тип товара'/>
+                    <Dropdown options={product.types} keyName={'type'} product={product} placeholder='Введите тип товара'/>
+
                     <input type="file"
                            onChange={selectFile}
                     />

@@ -1,19 +1,19 @@
-.bgModal{
+.bgModal {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   //display: none;
   //cursor: pointer;
 }
 
-.bgModal.active{
+.bgModal.active {
   display: flex;
 }
 
-.modalCard{
+.modalCard {
   padding: 0.6rem 1rem;
   width: 600px;
   background-color: white;
@@ -23,47 +23,51 @@
   border-radius: 3px;
   border: solid 1.5px black;
 
-  input{
+  input {
     width: 100%;
     padding: 0.2rem 0.5rem;
   }
 
-  button{
+  button {
     padding: 0.5rem;
     border: 2px solid;
     border-radius: 3px;
 
   }
 
-  .red{
+  .red {
     border-color: red;
     color: red;
     transition: all ease-out 0.2s;
     margin-right: 0.6rem;
 
 
-    &:hover{
+    &:hover {
       background-color: red;
       color: white;
     }
   }
 
-  .green{
+  .green {
     border-color: green;
     color: green;
     transition: all ease-out 0.2s;
 
-    &:hover{
+    &:hover {
       background-color: green;
       color: white;
     }
   }
 }
 
-.btnsWrapper{
+.btnsWrapper {
   display: flex;
   justify-content: end;
   padding: 1rem 0;
+}
+
+.propertyDropdown {
+  width: 100%;
 }
 
 
