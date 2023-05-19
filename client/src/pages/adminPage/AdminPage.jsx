@@ -8,6 +8,14 @@ import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 import editIcon from '../../resources/img/icons/edit_FILL0_wght100_GRAD0_opsz48.png';
 import deleteIcon from '../../resources/img/icons/delete_FILL0_wght100_GRAD0_opsz48.png';
+import {
+    getAllBenefits,
+    getAllColors,
+    getAllLights,
+    getAllMaterials,
+    getAllSizes,
+    getAllVarieties
+} from "../../api/propertiesAPI";
 
 const AdminPage = observer(() => {
     const {product} = useContext(Context);
@@ -20,6 +28,13 @@ const AdminPage = observer(() => {
 
     useEffect(() => {
         fetchTypes().then(data => product.setTypes(data));
+
+        getAllColors().then(data => product.setColors(data));
+        getAllSizes().then(data => product.setSizes(data));
+        getAllMaterials().then(data => product.setMaterials(data));
+        getAllLights().then(data => product.setLights(data));
+        getAllBenefits().then(data => product.setBenefits(data));
+        getAllVarieties().then(data => product.setVarieties(data));
 
         fetchProducts().then(data => {
             product.setProducts(data);
