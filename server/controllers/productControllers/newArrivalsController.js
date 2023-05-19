@@ -1,4 +1,4 @@
-const {Product} = require('../models/models');
+const {Product} = require('../../models/models');
 
 class NewArrivalsController {
     async getLastFourProducts(req, res) {

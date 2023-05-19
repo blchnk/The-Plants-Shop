@@ -1,4 +1,4 @@
-const {ProductInfo} = require('../models/models');
+const {ProductInfo} = require('../../models/models');
 
 class productInfoController {
     async getAll(req, res) {

@@ -89,7 +89,7 @@ const Product = sequalize.define('product', {
     }
 })
 
-const ProductInfo = sequalize.define('product_Info', {
+const ProductInfo = sequalize.define('product_info', {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -102,7 +102,27 @@ const ProductInfo = sequalize.define('product_Info', {
     description: {
         type: DataTypes.STRING,
         allowNull: false
-    }
+    },
+    disclaimer: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+})
+
+const ProductDropdownInfo = sequalize.define('product_dropdown_info', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    title: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
 })
 
 const Type = sequalize.define('type', {
@@ -118,6 +138,7 @@ const Type = sequalize.define('type', {
     }
 })
 
+// --------------------Промежуточные таблицы--------------------<<<
 const TypeColor = sequalize.define('type_color', {
     id: {
         type: DataTypes.INTEGER,
@@ -142,6 +163,32 @@ const TypeVariety = sequalize.define('type_variety', {
     }
 })
 
+const TypeLight = sequalize.define('type_light', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    }
+})
+
+const TypeMaterial = sequalize.define('type_material', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    }
+})
+
+const TypeBenefit = sequalize.define('type_benefit', {
+    id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    }
+})
+// --------------------Промежуточные таблицы-------------------->>>
+
+// --------------------Таблицы свойств--------------------<<<
 const Color = sequalize.define('color', {
     id: {
         type: DataTypes.INTEGER,
@@ -178,6 +225,43 @@ const Variety = sequalize.define('variety', {
     }
 })
 
+const Light = sequalize.define('light', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
+})
+
+const Material = sequalize.define('material', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
+})
+
+const Benefit = sequalize.define('benefit', {
+    id: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
+})
+// --------------------Таблицы свойств-------------------->>>
+
 User.hasOne(Cart);
 Cart.belongsTo(User);
 
@@ -189,6 +273,9 @@ CartProduct.belongsTo(Product);
 
 Product.hasMany(ProductInfo);
 ProductInfo.belongsTo(Product);
+
+Product.hasMany(ProductDropdownInfo);
+ProductDropdownInfo.belongsTo(Product);
 
 Type.hasMany(Product);
 Product.belongsTo(Type);
@@ -202,17 +289,34 @@ Size.belongsToMany(Type, {through: TypeSize});
 Type.belongsToMany(Variety, {through: TypeVariety});
 Variety.belongsToMany(Type, {through: TypeVariety});
 
+Type.belongsToMany(Light, {through: TypeLight});
+Light.belongsToMany(Type, {through: TypeLight});
+
+Type.belongsToMany(Material, {through: TypeMaterial});
+Material.belongsToMany(Type, {through: TypeMaterial});
+
+Type.belongsToMany(Benefit, {through: TypeBenefit});
+Benefit.belongsToMany(Type, {through: TypeBenefit});
+
+Color.hasMany(Product);
+Size.hasMany(Product);
+Variety.hasMany(Product);
+Light.hasMany(Product);
+Material.hasMany(Product);
+Benefit.hasMany(Product);
+
 module.exports = {
     User,
     Cart,
     CartProduct,
     Product,
     ProductInfo,
+    ProductDropdownInfo,
     Type,
-    Color,
-    TypeColor,
-    Size,
-    TypeSize,
-    Variety,
-    TypeVariety
+    Color, TypeColor,
+    Size, TypeSize,
+    Variety, TypeVariety,
+    Light, TypeLight,
+    Material, TypeMaterial,
+    Benefit, TypeBenefit
 }

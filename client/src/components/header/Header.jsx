@@ -37,10 +37,10 @@ const Header = () => {
                             <Link className={style.linkToPage} to={PRODUCTS_ROUTE}>Растения</Link>
                         </li>
                         <li className={style.item}>
-                            <Link className={style.linkToPage} to={CARE_ROUTE}>Уход</Link>
+                            <Link className={style.linkToPage} to={POTS_ROUTE}>Горшки</Link>
                         </li>
                         <li className={style.item}>
-                            <Link className={style.linkToPage} to={POTS_ROUTE}>Горшки</Link>
+                            <Link className={style.linkToPage} to={CARE_ROUTE}>Уход</Link>
                         </li>
                         <li className={style.item}>
                             <Link className={style.linkToPage} to={ABOUT_US_ROUTE}>О Нас</Link>
