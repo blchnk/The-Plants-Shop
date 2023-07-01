@@ -6,7 +6,7 @@ const {badRequest} = require("../../error/ApiError");
 class ProductController {
     async create(req, res, next) {
         try {
-            let { name, price, typeId, info, colorId, sizeId, varietyId } = req.body;
+            let { name, price, typeId, info, colorId, sizeId, varietyId, materialId, lightId, benefitId } = req.body;
             const { img } = req.files;
             let fileName = v4() + ".jpg";
             await img.mv(resolve(__dirname, "../..", "static", fileName));
@@ -31,6 +31,18 @@ class ProductController {
 
             if (varietyId) {
                 productData.varietyId = varietyId;
+            }
+
+            if (materialId) {
+                productData.materialId = materialId;
+            }
+
+            if (lightId) {
+                productData.lightId = lightId;
+            }
+
+            if (benefitId) {
+                productData.benefitId = benefitId;
             }
 
             const product = await Product.create(productData);

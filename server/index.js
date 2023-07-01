@@ -5,12 +5,9 @@ const fileUpload = require('express-fileupload');
 const router = require('./routes/index');
 const path = require('path');
 const errorHandler = require('./middleware/ErrorHandlingMiddleware');
-
 const sequelize = require('./db')
 const models = require('./models/models');
-
 const PORT = process.env.PORT;
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -36,5 +33,4 @@ const start = async () => {
         console.log(e);
     }
 }
-
 start();
