@@ -13,7 +13,8 @@ const AccountPage = observer(() => {
 
     const menuList = [
         {component: <AccountDetails/>, name: 'Профиль', icon: ''},
-        {component: <AccountSettings/>, name: 'Настройки аккаунта', icon: ''}
+        {component: <AccountSettings/>, name: 'Настройки аккаунта', icon: ''},
+        {component: '', name: 'История покупок', icon: ''},
     ];
 
     const [activeComponent, setActiveComponent] = useState(<AccountDetails/>);

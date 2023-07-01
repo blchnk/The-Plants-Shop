@@ -17,7 +17,7 @@ import ProductPage from "./pages/productPage/ProductPage";
 import MainPage from "./pages/mainPage/MainPage";
 import AuthPage from "./pages/authPage/AuthPage";
 import AccountPage from "./pages/accountPage/AccountPage";
-import Chat from "./pages/ChatPage/Chat";
+import Chat from "./pages/chatPage/Chat";
 import AboutUsPage from "./pages/aboutUsPage/AboutUsPage";
 
 export const authRoutes = [

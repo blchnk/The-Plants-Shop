@@ -37,14 +37,17 @@ const CreateProduct = observer(({setLoading, setActive}) => {
         formData.append('typeId', product.selectedType.id)
         formData.append('info', JSON.stringify(info))
 
-        formData.append('colorId', product.selectedColor.id)
-        formData.append('sizeId', product.selectedSize.id)
-        formData.append('materialId', product.selectedMaterial.id)
-        formData.append('lightId', product.selectedLight.id)
-        formData.append('varietyId', product.selectedVariety.id)
-        formData.append('benefitId', product.selectedBenefit.id)
+        product.selectedColor && formData.append('colorId', product.selectedColor.id)
+        product.selectedSize && formData.append('sizeId', product.selectedSize.id)
+        product.selectedSize && formData.append('sizeId', '')
+        product.selectedMaterial && formData.append('materialId', product.selectedMaterial.id)
+        product.selectedLight && formData.append('lightId', product.selectedLight.id)
+        product.selectedVariety && formData.append('varietyId', product.selectedVariety.id)
+        product.selectedBenefit && formData.append('benefitId', product.selectedBenefit.id)
 
-        createProduct(formData).then(data => setActive(false))
+        createProduct(formData).then(data => {
+            setActive(false);
+        })
     }
 
     return (

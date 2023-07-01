@@ -16,6 +16,9 @@ const ProductsPage = observer(({typeId}) => {
     const [pageTypeTitle, setPageTypeTitle] = useState('');
     const [sortParams, setSortParams] = useState({});
     const [sortBarVisible, setSortBarVisible] = useState(true);
+    const [filterOptions, setFilterOptions] = useState([]);
+
+    const sortedProducts = useSortedProducts(product.products, sortParams);
 
     useEffect(() => {
         fetchTypes().then(data => {
@@ -25,10 +28,16 @@ const ProductsPage = observer(({typeId}) => {
 
         fetchProducts(typeId).then(data => {
             product.setProducts(data);
+            console.log(product.products)
         });
-    }, [location.pathname]);
+    }, [location]);
 
-    const sortedProducts = useSortedProducts(product.products, sortParams);
+    useEffect(() => {
+    }, [filterOptions, setFilterOptions])
+
+    const filterWithSortBar = () => {
+
+    }
 
     return (
         <div className='container'>

@@ -21,7 +21,6 @@ const EditProduct = observer(({setLoading, setActive, productId}) => {
     }, [isLoading])
 
     useEffect(() => {
-        console.log(product.selectedType.id)
         let type = product.types.find(item => item.id === currentProduct.typeId);
         product.setSelectedType({id: type.id, name: type.name});
     })
@@ -49,6 +48,20 @@ const EditProduct = observer(({setLoading, setActive, productId}) => {
         formData.append('img', file)
         formData.append('typeId', product.selectedType.id)
         formData.append('info', JSON.stringify(info))
+
+        product.selectedColor ? formData.append('colorId', product.selectedColor.id) :
+            formData.append('colorId', '')
+        product.selectedSize ? formData.append('sizeId', product.selectedSize.id) :
+            formData.append('sizeId', '')
+        product.selectedMaterial ? formData.append('materialId', product.selectedMaterial.id) :
+            formData.append('materialId', '')
+        product.selectedLight ? formData.append('lightId', product.selectedLight.id) :
+            formData.append('lightId', '')
+        product.selectedVariety ? formData.append('varietyId', product.selectedVariety.id) :
+            formData.append('varietyId', '')
+        product.selectedBenefit ? formData.append('benefitId', product.selectedBenefit.id) :
+            formData.append('benefitId', '')
+
         patchProduct(currentProduct.id, formData).then(data => setActive(false))
     }
 
@@ -69,6 +82,43 @@ const EditProduct = observer(({setLoading, setActive, productId}) => {
                            onChange={(e) => setPrice(Number(e.target.value))}
                     />
                     <Dropdown options={product.types} keyName={'type'} product={product} placeholder='Введите тип товара'/>
+
+                    <div style={{display: 'flex', flexDirection: 'column'}}>
+                        <div style={{display: 'flex', gap: '0.5rem'}}>
+                            <div className={style.propertyDropdown}>
+                                <Dropdown keyName='light' product={product}
+                                          options={product.lights} placeholder='Освещение'
+                                />
+                            </div>
+                            <div className={style.propertyDropdown}>
+                                <Dropdown keyName={'benefit'} product={product}
+                                          options={product.benefits} placeholder='Преимущество'
+                                />
+                            </div>
+                            <div className={style.propertyDropdown}>
+                                <Dropdown keyName={'variety'} product={product}
+                                          options={product.varieties} placeholder='Разновидность'
+                                />
+                            </div>
+                        </div>
+                        <div style={{display: 'flex', gap: '0.5rem'}}>
+                            <div className={style.propertyDropdown}>
+                                <Dropdown keyName={'color'} product={product}
+                                          options={product.colors} placeholder='Цвет'
+                                />
+                            </div>
+                            <div className={style.propertyDropdown}>
+                                <Dropdown keyName='size' product={product}
+                                          options={product.sizes} placeholder='Размер'
+                                />
+                            </div>
+                            <div className={style.propertyDropdown}>
+                                <Dropdown keyName={'material'} product={product}
+                                          options={product.materials} placeholder='Материал'
+                                />
+                            </div>
+                        </div>
+                    </div>
 
                     <input type="file"
                            onChange={selectFile}

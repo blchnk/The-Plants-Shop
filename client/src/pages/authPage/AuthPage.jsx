@@ -67,6 +67,7 @@ const AuthPage = observer(() => {
                                 </NavLink>
                             </div>
                         }
+                        <p>Забыли пароль?</p>
                         <button className={style.sendBtn} onClick={auth}>{isLogin ? 'Войти' : 'Регистрация'}</button>
                     </div>
                 </div>

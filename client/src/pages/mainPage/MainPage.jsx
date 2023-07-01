@@ -111,7 +111,7 @@ const MainPage = () => {
     return (
         <div className='container'>
             <Intro/>
-            <NewArrivals/>
+            <NewArrivals title={'НОВЫЕ ПОСТУПЛЕНИЯ'}/>
             <AccordionPromo props={accordionCategoriesPromoData}
                             src={categoriesPromo}
                             promoName='КАТЕГОРИИ РАСТЕНИЙ'

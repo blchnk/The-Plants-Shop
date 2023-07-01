@@ -30,7 +30,7 @@ const AdminPage = observer(() => {
         fetchTypes().then(data => product.setTypes(data));
 
         getAllColors().then(data => product.setColors(data));
-        getAllSizes().then(data => product.setSizes(data));
+        getAllSizes().then(data => {product.setSizes(data)});
         getAllMaterials().then(data => product.setMaterials(data));
         getAllLights().then(data => product.setLights(data));
         getAllBenefits().then(data => product.setBenefits(data));
@@ -55,6 +55,22 @@ const AdminPage = observer(() => {
     return (
         <>
             <div className='container'>
+                <div>
+                    <div style={{display: 'flex', alignItems: 'baseline', marginRight: '1.7rem',marginBottom: '1rem', justifyContent: 'space-between'}}>
+                        <ul style={{display: 'flex', gap: '1rem', marginBottom: '1rem'}}>
+                            <li style={{fontWeight: '600'}}>
+                                Товары
+                            </li>
+                            <li>
+                                Пользователи
+                            </li>
+                            <li>
+                                Заказы
+                            </li>
+                        </ul>
+                        <input type="text" placeholder={'Введите для поиска...'} style={{padding: '0.3rem 1rem',border: '1px solid gray', borderRadius: '5px'}}/>
+                    </div>
+                </div>
                 <div className={style.adminPanel}>
                     <div>
                         <table>
@@ -84,14 +100,13 @@ const AdminPage = observer(() => {
                                              src={process.env.REACT_APP_API_URL + item.img}
                                         />
                                     </th>
-                                    {/*<th>{item.img}</th>*/}
                                     <th>{product.types[item.typeId - 1].name}</th>
-                                    {item.colorId ? <th>{product.colors[item.colorId].name}</th> : <th>Нет</th>}
-                                    {item.sizeId ? <th>{product.sizes[item.sizeId].name}</th> : <th>Нет</th>}
-                                    {item.materialId ? <th>{product.material[item.materialId].name}</th> : <th>Нет</th>}
-                                    {item.lightId ? <th>{product.light[item.lightId].name}</th> : <th>Нет</th>}
-                                    {item.benefitId ? <th>{product.benefit[item.benefitId].name}</th> : <th>Нет</th>}
-                                    {item.varietyId ? <th>{product.variety[item.varietyId].name}</th> : <th>Нет</th>}
+                                    {item.colorId ? <th>{product.colors[item.colorId - 1].name}</th> : <th>------</th>}
+                                    {item.sizeId ? <th>{product.sizes[item.sizeId - 1].name}</th> : <th>------</th>}
+                                    {item.materialId ? <th>{product.materials[item.materialId - 1].name}</th> : <th>------</th>}
+                                    {item.lightId ? <th>{product.lights[item.lightId - 1].name}</th> : <th>------</th>}
+                                    {item.benefitId ? <th>{product.benefits[item.benefitId - 1].name}</th> : <th>------</th>}
+                                    {item.varietyId ? <th>{product.varieties[item.varietyId - 1].name}</th> : <th>------</th>}
                                     <input style={{marginTop: '2.6rem'}} className={style.editBtn}
                                            onClick={() => editHandler(item.id)}
                                            type="image"
